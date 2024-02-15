@@ -9,3 +9,4 @@ sphinx-simplepdf
 # import altair as alt
 datapane
 pandas
+networkx

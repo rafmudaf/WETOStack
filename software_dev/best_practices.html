@@ -1,0 +1,2056 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Research Software Best Practices</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/images/logo.css?v=ac23bd2b" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-XK6LTW8XM7"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-XK6LTW8XM7');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-XK6LTW8XM7');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="https://unpkg.com/mermaid@10.2.0/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'software_dev/best_practices';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Developer Training" href="developer_resources.html" />
+    <link rel="prev" title="Attribute Schema" href="../portfolio_analysis/attributes_schema.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../_static/logo.gif" class="logo__image only-light" alt=" - Home"/>
+    <script>document.write(`<img src="../_static/logo.gif" class="logo__image only-dark" alt=" - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">News and Events</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../news/latest_news.html">Latest News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workshops/nawea_2023.html">2023 NAWEA / WindTech Workshops</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../workshops/workshop.html">2023 Model Owners Workshop</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../workshops/workshop_report.html">Workshop Report</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Portfolio Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../portfolio_analysis/software_list.html">Software Listing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio_analysis/attribute_table.html">Software Attributes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technical_areas/overview.html">Technical Areas</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../capabilities/overview.html">Capabilities</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../capabilities/aero.html">Aerodynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../capabilities/system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../capabilities/wake_loss_wfc.html">Wake Loss and Wind Farm Controls.</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio_analysis/map_network.html">Depedencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio_analysis/attributes_schema.html">Attribute Schema</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Research Software Best Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer_resources.html">Developer Training</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/nrel/wetostack" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/nrel/wetostack/edit/main/docs/software_dev/best_practices.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/nrel/wetostack/issues/new?title=Issue%20on%20page%20%2Fsoftware_dev/best_practices.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/software_dev/best_practices.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Research Software Best Practices</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-best-practices">Summary of best practices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessibility">Accessibility</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisite-knowledge">Prerequisite knowledge</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution">Distribution</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usability">Usability</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#user-interface">User interface</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#command-line-interface">Command line interface</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#input-and-output-files">Input and output files</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-messages">Error messages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata">Metadata</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extendability">Extendability</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-style">Code style</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-zen-of-python">The Zen of Python</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture-and-design">Architecture and design</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#software-design-process">Software design process</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#design-patterns">Design patterns</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#version-control">Version control</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#collaborative-workflows-with-github">Collaborative workflows with GitHub</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pull-requests">Pull Requests</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-integration-automating-tests-compliance-and-delivery">Continuous integration: automating tests, compliance, and delivery</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methodologies-for-communicating-intent-and-verifying-implementation">Methodologies for communicating intent and verifying implementation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-rse-the-engineers-behind-research-software">Appendix - RSE: The engineers behind research software</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rse-value-recognition">RSE value recognition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#career-growth-and-trajectory">Career growth and trajectory</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="research-software-best-practices">
+<span id="bestpractices"></span><h1><a class="toc-backref" href="#id6" role="doc-backlink">Research Software Best Practices</a><a class="headerlink" href="#research-software-best-practices" title="Link to this heading">#</a></h1>
+<p>Wind energy researchers typically share one key characteristic: a passion for increasing
+wind energy in the global energy mix. The U.S. Department of Energy (DOE) supports this mission
+in a number of ways including allocating funding directly to various aspects of wind energy
+research through the
+<a class="reference external" href="https://www.energy.gov/eere/office-energy-efficiency-renewable-energy">Office of Energy Efficiency and Renewable Energy (EERE)</a>
+via the
+<a class="reference external" href="https://www.energy.gov/eere/wind/wind-energy-technologies-office">Wind Energy Technologies Office (WETO)</a>.
+While the traditional output of research is academic publication, software development efforts
+are increasingly a major focus. Software tools in the research environment allow researchers to
+describe an idea and quickly increase the scope and scale as they study it further.
+As a product of research, these tools represent a direct pipeline from researcher to industry
+practitioners since they are the implementation of ideas described in academic publications.
+Given this vital role in wind energy research and
+commercial development, the broad research software portfolio supported by WETO must maintain a
+minimum level of quality to support the wind energy field in the growing transition to
+renewable energy. <strong>This report outlines a series of best practices to be adopted by all
+WETO-supported software projects, as well as expectations that the communities interacting with
+these projects should have of the developers and tools themselves.</strong></p>
+<!-- EERE Mission:
+EERE’s mission is to accelerate the research, development, demonstration, and deployment of
+technologies and solutions to equitably transition America to net-zero greenhouse gas emissions
+economy-wide by no later than 2050, and ensure the clean energy economy benefits all Americans,
+creating good paying jobs for the American people—especially workers and communities impacted
+by the energy transition and those historically underserved by the energy system and
+overburdened by pollution. -->
+<!-- General idea to community here: -->
+<!-- WETO Software is critical. -->
+<!-- It is **the** mechanism to put the ideas behind WETO research into the hands of practitioners. -->
+<!-- It should be accessible to students, researchers, practitioners within wind energy as well as engineers and scientists from adjacent fields. -->
+<!-- While each tool or project has a finite life span, the WETO Software Portfolio will exist as long as WETO itself exists. -->
+<!-- This collection of software truly is the foundation of innovation in wind energy research. -->
+<p>Wind energy research software has a unique standing in the field of scientific software. The
+stakeholders are varied with a subset being:</p>
+<!-- Venn diagram funders / programmatic interests, developers, users -->
+<ul class="simple">
+<li><p>DOE EERE leadership</p></li>
+<li><p>DOE WETO leadership and program managers</p></li>
+<li><p>National lab leadership</p></li>
+<li><p>Associated project principle investigators</p></li>
+<li><p>Research software engineers</p></li>
+<li><p>Wind energy researchers in academia
+(including graduate students, post docs, and national lab staff)</p></li>
+<li><p>Industry researchers and practitioners</p></li>
+<li><p>Commercial software developers</p></li>
+<li><p>The general public interested in wind energy</p></li>
+</ul>
+<p>These software are typically the end-user of other generic software libraries, so
+the funding cycles are often tied to applied research rather than the development of the
+software itself. Since the developers are also wind energy researchers, these tools are
+typically designed in a way that closely resembles the application in which they’re used.
+Additionally, the expertise and incentives for the developers have a high variability, and
+often neither are aligned with software engineering or computer science.</p>
+<p>Given the unique environment in which wind energy research software is produced and consumed,
+it is critical for model owners to understand the context of their software. A framework
+for developing this understanding is to answer the following questions of a given software project:</p>
+<ul class="simple">
+<li><p>What is it’s purpose?</p></li>
+<li><p>What is it’s role in the field of wind energy?</p></li>
+<li><p>What is the profile of the expected users?</p></li>
+<li><p>For how long will it be relevant?</p></li>
+<li><p>What is the expected impact?</p></li>
+</ul>
+<p>These questions allow model owners to identify the appropriate methods for the design, development,
+and long term maintenance of their software. Additionally, the answer provide context for future
+planners to understand why particular decisions were made and discern the consequences of
+changing course.</p>
+<p>The information in this report is aggregated from experience within WETO-supported software
+development groups as well as external organizations and efforts to define the craft of
+research software engineering. These best practices aim to make the
+collaborative development process efficient and effective while improving the model
+understanding across stakeholders. Additionally,
+the general adoption of a common framework for software quality ensures that the end users
+of WETO software can trust these tools and accurately understand the risks to workflow integration.</p>
+<nav class="contents" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#research-software-best-practices" id="id6">Research Software Best Practices</a></p>
+<ul>
+<li><p><a class="reference internal" href="#summary-of-best-practices" id="id7">Summary of best practices</a></p></li>
+<li><p><a class="reference internal" href="#accessibility" id="id8">Accessibility</a></p>
+<ul>
+<li><p><a class="reference internal" href="#prerequisite-knowledge" id="id9">Prerequisite knowledge</a></p></li>
+<li><p><a class="reference internal" href="#distribution" id="id10">Distribution</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#usability" id="id11">Usability</a></p>
+<ul>
+<li><p><a class="reference internal" href="#user-interface" id="id12">User interface</a></p>
+<ul>
+<li><p><a class="reference internal" href="#command-line-interface" id="id13">Command line interface</a></p></li>
+<li><p><a class="reference internal" href="#input-and-output-files" id="id14">Input and output files</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#error-messages" id="id15">Error messages</a></p></li>
+<li><p><a class="reference internal" href="#metadata" id="id16">Metadata</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#extendability" id="id17">Extendability</a></p>
+<ul>
+<li><p><a class="reference internal" href="#code-style" id="id18">Code style</a></p>
+<ul>
+<li><p><a class="reference internal" href="#the-zen-of-python" id="id19">The Zen of Python</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#architecture-and-design" id="id20">Architecture and design</a></p>
+<ul>
+<li><p><a class="reference internal" href="#software-design-process" id="id21">Software design process</a></p></li>
+<li><p><a class="reference internal" href="#design-patterns" id="id22">Design patterns</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#version-control" id="id23">Version control</a></p></li>
+<li><p><a class="reference internal" href="#collaborative-workflows-with-github" id="id24">Collaborative workflows with GitHub</a></p></li>
+<li><p><a class="reference internal" href="#pull-requests" id="id25">Pull Requests</a></p></li>
+<li><p><a class="reference internal" href="#continuous-integration-automating-tests-compliance-and-delivery" id="id26">Continuous integration: automating tests, compliance, and delivery</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#methodologies-for-communicating-intent-and-verifying-implementation" id="id27">Methodologies for communicating intent and verifying implementation</a></p></li>
+<li><p><a class="reference internal" href="#appendix-rse-the-engineers-behind-research-software" id="id28">Appendix - RSE: The engineers behind research software</a></p>
+<ul>
+<li><p><a class="reference internal" href="#rse-value-recognition" id="id29">RSE value recognition</a></p></li>
+<li><p><a class="reference internal" href="#career-growth-and-trajectory" id="id30">Career growth and trajectory</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+<!-- These are aspects of research software that are critical to robustness, adoption, and ultimate impact.
+Consider these best practices as general guidelines for planning research activities that include the development of software. -->
+<section id="summary-of-best-practices">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">Summary of best practices</a><a class="headerlink" href="#summary-of-best-practices" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="#accessibility"><span class="std std-ref">Accessibility</span></a></p>
+<ul class="simple">
+<li><p>Determine the barriers to entry for expected users and address accessibility accordingly.
+Automate accessibility methods and processes so that it is implicit in the software
+development process.</p></li>
+<li><p>Prerequisite knowledge - Identify target user profiles and anticipate their levels of understanding.
+Accurately understand the complexity of the systems used to access the software, and evaluate
+whether this matches the expected skills in target users.
+Note that technical solutions can be augmented with documentation to address gaps in prerequisite
+knowledge.</p></li>
+<li><p>Distribution - Provide a streamlined method of installation using common software distribution systems.</p></li>
+</ul>
+<p><a class="reference internal" href="#usability"><span class="std std-ref">Usability</span></a></p>
+<ul class="simple">
+<li><p>User interface - UIs should be predictable, and adopt existing conventions for the contexts
+in which they exist.</p></li>
+<li><p>Command line interface - If a CLI exists, it should be meaningful, predictable, and well documented.
+Refer to contextual guidelines and conventions for flags, syntax, and functionality.
+At a minimum, provide documentation via the help flag, and extended documentation alongside
+examples and tutorials is helpful.</p></li>
+<li><p>Input and output files - Use a common file structure relevant to the type of data produced from a software,
+and leverage the existing ecosystem of tools to pre and post-process input and output files.</p></li>
+<li><p>Error messages - Identify an error messaging system that enables communicating to users without encumbering
+the development process.
+Provide useful errors that include data, provide guidance for moving forward, and help maintainers
+identify potential bugs.</p></li>
+<li><p>Metadata - Providing metadata to users requires minimal effort for developers, and it enables users to more
+effectively share and compare data and get help. At a minimum, display version numbers, critical
+settings, and dependency info.</p></li>
+</ul>
+<p><a class="reference internal" href="#extendability"><span class="std std-ref">Extendability</span></a></p>
+<ul class="simple">
+<li><p>How easily a project can be extended is critical to it’s viability as a long term
+DOE-funded project.
+Prioritize simplicity in architecture, dependencies, and toolchains.
+Create a development environment balancing modern needs with stability.</p></li>
+<li><p>Code style - Strive to write code that external developers can easily read and comprehend with minimal
+preexisting context.</p></li>
+<li><p>Architecture and design - Adopt an explicit design process where the major ideas are made chosen prior to writing any code.</p></li>
+<li><p>Software design process - Create a parti and list performance requirements for each level of fidelity in the software.
+Establish methods to validate the design and implementation given knowledge of how a software
+is ultimately used.</p></li>
+<li><p>Design patterns - Study existing design patterns, and adopt a few, as needed.
+Refer to existing materials especially relevant to research software architecture.</p></li>
+<li><p>Version control - Craft a version control history that communicates the evolution of changes of the software
+to future developers including the author of current changes.
+Evolve the software in a logical, linear process with digestible, easily reviewable changes.</p></li>
+<li><p>Collaborative workflows with GitHub - Treat GitHub as the home page of a software project, and develop the planning and coordination
+activities as a first-order communication, signalling, and organizational mechanism for the
+community of users.</p></li>
+<li><p>Pull Requests - All components of a pull request should be considered documentation for future reference
+and an aspect of version control.
+PR reviews should be verbose, thorough, positive, and referential to guiding documents.</p></li>
+<li><p>Continuous integration: automating tests, compliance, and delivery - Codify software quality by establishing automated systems to check and provide feedback
+within the development process.
+Offload as many manual processes as possible and practical to the continuous integration system.</p></li>
+</ul>
+</section>
+<section id="accessibility">
+<span id="id1"></span><h2><a class="toc-backref" href="#id8" role="doc-backlink">Accessibility</a><a class="headerlink" href="#accessibility" title="Link to this heading">#</a></h2>
+<p>Accessibility is concerned with how practitioners are expected to obtain and integrate a software
+into their processes. The product that is to be obtained is the executable version of the software.
+In the case of compiled programming languages, this is a binary executable or library file,
+while interpreted languages typically require distributing the source code directly.</p>
+<p>For guidance on developer accessibility, see <a class="reference internal" href="#extendability"><span class="std std-ref">Extendability</span></a>.</p>
+<p>The technical approaches to address accessibility depend on the targeted users.
+To identify methods for improving accessibility, first identify the expected users and
+anticipate their barriers to entry.
+Then, create processes and technical solutions to minimize these barriers.
+Finally, automated the processes so that accessibility is implicit to the process rather than
+dependent on developers remembering to meet these needs.</p>
+<section id="prerequisite-knowledge">
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">Prerequisite knowledge</a><a class="headerlink" href="#prerequisite-knowledge" title="Link to this heading">#</a></h3>
+<p>Using a computer in a scientific context is a learned skill and requires years of practice to
+become proficient. Tools like a “terminal”, “shell”, or “command prompt” are not universally
+intuitive, and that these three terms are used interchangeably can lead to further confusion.
+This is an example of a barrier to entry often encountered by early-career researchers and
+experienced practitioners alike. In order to improve accessibility, it is important to
+understand the experience of users and design software to meet their needs.</p>
+<p>Some examples of common barriers to entry are:</p>
+<ul class="simple">
+<li><p>Navigating a “terminal”</p></li>
+<li><p>Knowledge of acronyms, jargon, or interchangeable phrases</p>
+<ul>
+<li><p>CLI, API, IDE, etc</p></li>
+<li><p>Compile, clone, check out</p></li>
+<li><p>Terminal vs shell vs command prompt</p></li>
+</ul>
+</li>
+<li><p>Extensions: <code class="docutils literal notranslate"><span class="pre">.exe</span></code>, <code class="docutils literal notranslate"><span class="pre">.so</span></code>, <code class="docutils literal notranslate"><span class="pre">.dll</span></code>, <code class="docutils literal notranslate"><span class="pre">.dylib</span></code></p></li>
+<li><p>Installation:</p>
+<ul>
+<li><p>Package managers</p></li>
+<li><p>Downloading executable files</p></li>
+<li><p>Configuring an environment</p></li>
+</ul>
+</li>
+</ul>
+<p>Identify target user profiles including their levels of experience of understanding in
+computing environments.
+Then, design the research software so that it matches the expected level of expertise in
+users.
+Note that this is often an iterative process, and technical solutions are not always needed
+to address barriers to entry.
+Explanatory documentation is a major resource in addressing ambiguity or inexperience in
+a particular technology.
+Leverage existing tutorials were necessary; for example, a high-level overview of methods
+to use a terminal in the context of a specific software project along with an accompanying
+link to a deep dive into terminal training can be very helpful.</p>
+</section>
+<section id="distribution">
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">Distribution</a><a class="headerlink" href="#distribution" title="Link to this heading">#</a></h3>
+<p>Research computing software often depend on third-party libraries, and many of these dependencies
+are research software themselves. Therefore, the installation and environment configuration
+for this type of software can easily become complex.
+Mature package managers are a great resource since they have a distribution system already in place
+and manage dependencies between software tools.
+The ecosystem of open source software package managers has coalesced around a few primary tools:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pypi.org">Python Package Index (PyPI)</a></p>
+<ul>
+<li><p>Source and binary distribution package manager for Python software</p></li>
+<li><p>Platform: any</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://docs.conda.io/en/latest/">Conda</a></p>
+<ul>
+<li><p>Package, dependency and environment management for any language</p></li>
+<li><p>Platform: any</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://conda-forge.org">Conda-forge</a></p>
+<ul>
+<li><p>A community-led collection of recipes, build infrastructure and distributions for the conda package manager</p></li>
+<li><p>Platform: any</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://brew.sh">Homebrew (brew)</a></p>
+<ul>
+<li><p>The Missing Package Manager for macOS (or Linux)</p></li>
+<li><p>Platform: Ubiquitous for macOS, but also available for Linux</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://spack.io">Spack</a></p>
+<ul>
+<li><p>Spack is a package manager for supercomputers supporting any language and distributable product</p></li>
+<li><p>Platform: Ubiquitous for Linux-based supercomputers, and also available for macOS and Linux</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/APT_(software)">APT</a></p>
+<ul>
+<li><p>A user interface that works with core libraries to handle the installation and removal of software on Debian, and Debian-based Linux distributions</p></li>
+<li><p>Platform: Ubiquitous for Linux for system-level or generic packages</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://fpm.fortran-lang.org/index.html">Fortran package manager (FPM)</a></p>
+<ul>
+<li><p>Fortran-specific executable and library package manager.</p></li>
+</ul>
+</li>
+</ul>
+<p>The process for including a package in a package management system varies, but all are designed
+to integrate with automated systems to prepare and distribute the package automatically upon
+a given event. The practice of releasing a software package after a tagged release
+(see <a class="reference internal" href="#version-control"><span class="std std-ref">Version control</span></a>) or requisite set of changes is called “continuous distribution”,
+a component of “continuous integration”. See <a class="reference internal" href="#continuous"><span class="std std-ref">Continuous integration: automating tests, compliance, and delivery</span></a> for details.
+Tools for this level of automation are ubiquitous, and a practical choice
+is GitHub Actions (see <a class="reference internal" href="#github"><span class="std std-ref">Collaborative workflows with GitHub</span></a>).</p>
+</section>
+</section>
+<section id="usability">
+<span id="id2"></span><h2><a class="toc-backref" href="#id11" role="doc-backlink">Usability</a><a class="headerlink" href="#usability" title="Link to this heading">#</a></h2>
+<p>Usability is concerned with how practitioners are expected to execute the software including
+creating inputs and managing outputs.
+While the content and promise of a particular software will bring users to it in the first
+place, the ease of usability is responsible for keeping them engaged with the software.
+In this context, consider any user interfaces including messaging back to the user through
+errors as the “touch points” that should be optimized.
+Developers should recall their own experience in using software including outside
+of the research environment.
+Contemporary software consumers have short attention spans and will generally choose
+the path of least resistance to accomplish a task even at the cost of access to a more
+advanced feature.</p>
+<section id="user-interface">
+<h3><a class="toc-backref" href="#id12" role="doc-backlink">User interface</a><a class="headerlink" href="#user-interface" title="Link to this heading">#</a></h3>
+<p>The user interface (UI) is any mechanism through which users interact with the software
+typically by providing inputs and receiving outputs. Examples of UI’s include:</p>
+<ul class="simple">
+<li><p>Graphical user interface (GUI)</p></li>
+<li><p>Web-based front ends</p></li>
+<li><p>Input and output files</p></li>
+<li><p>Command line interface</p></li>
+<li><p>Library API’s</p></li>
+</ul>
+<p>WETO software UI’s should be well defined and predictable.
+They should adopt the conventions that already exist in the environments and contexts
+in which they’re used.
+Most importantly, all user interfaces should be well documented.</p>
+<section id="command-line-interface">
+<h4><a class="toc-backref" href="#id13" role="doc-backlink">Command line interface</a><a class="headerlink" href="#command-line-interface" title="Link to this heading">#</a></h4>
+<p>The command line interface (CLI) is one type of front-end for software.
+It is the method by which a software is executed via a computer’s terminal.
+WETO software should in general adhere to the following conventions and principles for CLI’s.
+However, these are guidelines and can be skipped when context is clear or another
+option improves usability.</p>
+<ul class="simple">
+<li><p>Adopt command line syntax requirements from <a class="reference external" href="https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap12.html">https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap12.html</a></p>
+<ul>
+<li><p>Guideline 1: Utility names should be between two and nine characters, inclusive.</p></li>
+<li><p>Guideline 2: Utility names should include lowercase letters (the lower character classification) and digits only from the portable character set.</p></li>
+<li><p>Guideline 3: Each option name should be a single alphanumeric character (the alnum character classification) from the portable character set. The <code class="docutils literal notranslate"><span class="pre">-W</span></code> (capital-W) option shall be reserved for vendor options. Multi-digit options should not be allowed.</p></li>
+<li><p>Guideline 4: All options should be preceded by the `-`` delimiter character.</p></li>
+<li><p>Guideline 5: One or more options without option-arguments, followed by at most one option that takes an option-argument, should be accepted when grouped behind one <code class="docutils literal notranslate"><span class="pre">-</span></code> delimiter.</p></li>
+<li><p>Guideline 6: Each option and option-argument should be a separate argument, except as noted in <a class="reference external" href="https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap12.html">Utility Argument Syntax, item (2)</a>.</p></li>
+<li><p>Guideline 7: Option-arguments should not be optional.</p></li>
+<li><p>Guideline 8: When multiple option-arguments are specified to follow a single option, they should be presented as a single argument, using <code class="docutils literal notranslate"><span class="pre">&lt;comma&gt;</span></code> characters within that argument or <code class="docutils literal notranslate"><span class="pre">&lt;blank&gt;</span></code> characters within that argument to separate them.</p></li>
+<li><p>Guideline 9: All options should precede operands on the command line.</p></li>
+<li><p>Guideline 10: The first <code class="docutils literal notranslate"><span class="pre">--</span></code> argument that is not an option-argument should be accepted as a delimiter indicating the end of options. Any following arguments should be treated as operands, even if they begin with the <code class="docutils literal notranslate"><span class="pre">-</span></code> character.</p></li>
+<li><p>Guideline 11: The order of different options relative to one another should not matter, unless the options are documented as mutually-exclusive and such an option is documented to override any incompatible options preceding it. If an option that has option-arguments is repeated, the option and option-argument combinations should be interpreted in the order specified on the command line.</p></li>
+<li><p>Guideline 12: The order of operands may matter and position-related interpretations should be determined on a utility-specific basis.</p></li>
+<li><p>Guideline 13: For utilities that use operands to represent files to be opened for either reading or writing, the <code class="docutils literal notranslate"><span class="pre">-</span></code> operand should be used to mean only standard input (or standard output when it is clear from context that an output file is being specified) or a file named “-“.</p></li>
+<li><p>Guideline 14: If an argument can be identified according to Guidelines 3 through 10 as an option, or as a group of options without option-arguments behind one <code class="docutils literal notranslate"><span class="pre">-</span></code> delimiter, then it should be treated as such.</p></li>
+</ul>
+</li>
+<li><p>Adopt these minimum GNU conventions</p>
+<ul>
+<li><p>A short version with one dash and a long version with two dashes</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-v</span></code> / <code class="docutils literal notranslate"><span class="pre">--version</span></code> to show version information</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-h</span></code> / <code class="docutils literal notranslate"><span class="pre">--help</span></code> to display help information</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-i</span></code> / <code class="docutils literal notranslate"><span class="pre">--input</span></code> for input file specification</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-o</span></code> / <code class="docutils literal notranslate"><span class="pre">--output</span></code> for input file specification</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-V</span></code> / <code class="docutils literal notranslate"><span class="pre">--verbose</span></code> to include additional output in terminal</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-q</span></code> / <code class="docutils literal notranslate"><span class="pre">--quiet</span></code> to suppress terminal output</p></li>
+</ul>
+</li>
+<li><p>Use context-specific switches</p>
+<ul>
+<li><p>Unix: <code class="docutils literal notranslate"><span class="pre">-</span></code> or <code class="docutils literal notranslate"><span class="pre">--</span></code></p></li>
+<li><p>Python: <code class="docutils literal notranslate"><span class="pre">-</span></code> or <code class="docutils literal notranslate"><span class="pre">--</span></code></p></li>
+<li><p>Windows command prompt: <code class="docutils literal notranslate"><span class="pre">/</span></code></p></li>
+</ul>
+</li>
+</ul>
+<p>Command line interfaces should include documentation via the <code class="docutils literal notranslate"><span class="pre">--help</span></code> / <code class="docutils literal notranslate"><span class="pre">-h</span></code> flag.
+For Python software, using the standard <a class="reference external" href="https://docs.python.org/3/library/argparse.html">argparse</a>
+library creates a help prompt automatically.
+Extended CLI documentation alongside tutorials and explanations of the software is helpful to
+attach meaning to the functionality available via the CLI.</p>
+</section>
+<section id="input-and-output-files">
+<h4><a class="toc-backref" href="#id14" role="doc-backlink">Input and output files</a><a class="headerlink" href="#input-and-output-files" title="Link to this heading">#</a></h4>
+<p>The ecosystem of tools for processing data files is vast and mature.
+Therefore, input and output files should adopt a common file type and syntax relevant to the
+field and context of the software itself.
+For example, large datasets generated by computational fluid dynamics software are often
+exported in <a class="reference external" href="https://www.hdfgroup.org/solutions/hdf5/">HDF5</a> format since robust
+libraries are available to export the data and load it into post-processing tools.
+Similarly, input files should retain a ubiquitous human-readable format such as
+<a class="reference external" href="https://yaml.org">YAML</a> as this allows users to generate input files programmatically
+using standard libraries. Input and output files required by WETO software should
+adhere to the following conventions and principles:</p>
+<ul class="simple">
+<li><p>Simple, clear, and predictable structure</p></li>
+<li><p>Expressive and concise</p></li>
+<li><p>Easy to produce and consume using ubiquitous software tools</p></li>
+<li><p>Minimal data consumption</p>
+<ul>
+<li><p>For large data sets, option to split into smaller files or binary format</p></li>
+</ul>
+</li>
+<li><p>Typical and predictable data types</p></li>
+</ul>
+<p>File types with common libraries for popular language ecosystems are:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON">JSON</a> - JavaScript
+Object Notation; a very common data structure used throughout the web and in various
+computing environments</p></li>
+<li><p><a class="reference external" href="https://yaml.org">YAML</a> - YAML Aint Markup Language; not entirely but basically a
+human-readable version of JSON</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Comma-separated_values">CSV</a> - Comma separated values</p></li>
+<li><p><a class="reference external" href="https://examples.vtk.org/site/VTKFileFormats/">VTK</a> - Visualization Tool Kit; a variety of
+file types and readers for different types of data</p></li>
+<li><p><a class="reference external" href="https://portal.hdfgroup.org/display/HDF5/HDF5">HDF5</a> - Hierarchical Data Format; used for large,
+complex, heterogeneous data sets; HDF includes libraries for reading and writing HDF files</p></li>
+<li><p><a class="reference external" href="https://github.com/nasa/Plot3D_utilities">Plot3D</a> - Data type for 3D structured grid data</p></li>
+<li><p><a class="reference external" href="https://cgns.github.io/WhatIsCGNS.html">CGNS</a> - CFD General Notation System</p></li>
+<li><p><a class="reference external" href="https://www.markdownguide.org/getting-started/">Markdown</a> - A markup language for text documents</p></li>
+<li><p><a class="reference external" href="https://docutils.sourceforge.io/rst.html">reStructured Text</a> - A markup language for text
+documents</p></li>
+</ul>
+</section>
+</section>
+<section id="error-messages">
+<h3><a class="toc-backref" href="#id15" role="doc-backlink">Error messages</a><a class="headerlink" href="#error-messages" title="Link to this heading">#</a></h3>
+<p>Messaging to practitioners from within a software can be immensely helpful.
+At the same time, the infrastructure for communicating messages can be a heavy lift.
+It is important to find a balance of appropriate levels of messaging while also ensuring that
+the messages themselves are up to date with the software features and implementations.
+Too much messaging results in information overload and critical messages can be lost in noise.
+Additionally, messaging is another developer responsibility and can be overlooked among all of the
+other responsibilities during the development cycle.</p>
+<p>Useful error messages:</p>
+<ul class="simple">
+<li><p>Expect that the reader does not have the context of the author</p>
+<ul>
+<li><p>Include a stack trace in all messages</p></li>
+<li><p>At minimum, include the calling function name</p></li>
+</ul>
+</li>
+<li><p>Anticipate the needs of the reader</p>
+<ul>
+<li><p>What will they be thinking about when this error pops up?</p></li>
+<li><p>What will they need to do next?</p></li>
+</ul>
+</li>
+<li><p>Include information that will help project maintainers understand the context of the problem</p>
+<ul>
+<li><p>Include metadata where relevant; see <a class="reference internal" href="#metadata"><span class="std std-ref">Metadata</span></a></p></li>
+<li><p>Include the value of data that is found invalid</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="metadata">
+<span id="id3"></span><h3><a class="toc-backref" href="#id16" role="doc-backlink">Metadata</a><a class="headerlink" href="#metadata" title="Link to this heading">#</a></h3>
+<p>Tracking metadata in software projects is a simple way to provide clarity to all users.
+This greatly improves usability and has the added effect of improving the debugging process.
+This information can be provided to the user in any structured output from the software.
+For example, output data files, reports, images, etc can all include a snapshot of the metadata.
+The objective is to communicate information on the state of the software (version and runtime),
+the state of the computing environment, and any user decisions.</p>
+<p>The following fields are minimum metadata to include:</p>
+<ul class="simple">
+<li><p>Version number in <a class="reference external" href="https://semver.org">semantic versioning format</a> (MAJOR.MINOR.BUGFIX, i.e. v3.2.1)</p></li>
+<li><p>Execution time</p></li>
+<li><p>Compile info, if applicable</p>
+<ul>
+<li><p>Compiler vendor</p></li>
+<li><p>Compile time</p></li>
+<li><p>Compiler settings</p></li>
+</ul>
+</li>
+<li><p>System information such as OS, relevant hardware (i.e. accelerators) vendor</p></li>
+<li><p>Relevant settings enabled</p></li>
+</ul>
+</section>
+</section>
+<section id="extendability">
+<span id="id4"></span><h2><a class="toc-backref" href="#id17" role="doc-backlink">Extendability</a><a class="headerlink" href="#extendability" title="Link to this heading">#</a></h2>
+<p>Extendability is concerned with how improvements such as new features, bug fixes, and general
+maintenance are added to an existing software project. This covers both the technical aspects
+as well as the management of multiple developers and development efforts happening
+concurrently.</p>
+<p>The lifecycle of WETO software projects typically follows a pattern of funding,
+development, and release resulting in a recurring development workflow depicted below.
+The “Maintenance” tasks are usually optional and implicitly embedded
+in future development efforts. Therefore, it is critical to the life of all WETO software to
+prioritize extendability so that future funding opportunities are attractive to stakeholders,
+and general maintenance and infrastructure upgrades can be introduced with minimal overhead.</p>
+<!-- TODO: strengthen this intro. The point is that maintenance is key to the life of WETO software.
+If it's difficult to extend, any research effort will seem very expensive. Additionally, developers
+move on to other organizations and pass their software to other developers. If it's difficult
+to extend, new developers will have a tough time or simply will move on to other tools.
+Possibly include this diagram (or a version of the funding / development cycle) below in the intro.
+-->
+<div class="mermaid">
+            flowchart LR
+
+    a[&quot;Research
+    &amp; development&quot;]
+    b[&quot;Verification&quot;]
+    c[&quot;General use&quot;]
+    d[&quot;Optional: Maintenance&quot;]
+
+    a --&gt; b
+    b --&gt; c
+    c -.-&gt; d
+    c --&gt; a
+    d -.-&gt; a
+        </div><!-- This topic is closely tied to [](communicating_design), and the objective is to ensure that -->
+<p>This topic is closely tied to the need for communicating elements of design, and the objective is to ensure that
+developers can easily approach the project with minimal overhead required to align their
+computing environment, scope the work, implement the changes, and verify the results.</p>
+<p>A guiding principle on extendability is to use ubiquitous infrastructure.
+Mature and ubiquitous tools and libraries come with formal and community-based documentation,
+ecosystems of tools such as IDE extensions, and institutional or cultural knowledge of
+their use and nuances that can be difficult and time consuming to create for specialized
+infrastructure.
+Common build systems such as CMake with the GNU or LLVM toolchains should be used instead of
+the newest projects.
+Popular programming languages (Python, C++, Fortran) are more approachable than specialized
+languages (Rust, Julia, Elixir), and enable a wider developer base.
+Software project managers should strive to create a development environment balancing the need for
+modern tooling, modern developer expectations, and stability.</p>
+<section id="code-style">
+<h3><a class="toc-backref" href="#id18" role="doc-backlink">Code style</a><a class="headerlink" href="#code-style" title="Link to this heading">#</a></h3>
+<p>In software development, the word “grok” is often used (see usage in
+<a class="reference external" href="https://hn.algolia.com/?q=grok">Hacker News</a>,
+<a class="reference external" href="https://lobste.rs/search?q=grok&amp;amp;what=stories&amp;amp;order=newest">Lobsters</a>,
+<a class="reference external" href="https://stackoverflow.com/search?tab=newest&amp;amp;q=grok&amp;amp;searchOn=3">StackOverflow</a>)
+to communicate about degrees of understanding. This word is described by it’s creator below
+(Source: <a class="reference external" href="https://en.wikipedia.org/wiki/Grok">Wikipedia</a>).</p>
+<blockquote>
+<div><p><em>Grok</em> means “to understand”, of course, but Dr. Mahmoud, who might be termed the leading
+Terran expert on Martians, explains that it also means, “to drink” and “a hundred other
+English words, words which we think of as antithetical concepts. ‘Grok’ means <em>all</em> of
+these. It means ‘fear’, it means ‘love’, it means ‘hate’ – proper hate, for by the Martian
+‘map’ you cannot hate anything unless you grok it, understand it so thoroughly that you
+merge with it and it merges with you – then you can hate it. By hating yourself. But this
+implies that you love it, too, and cherish it and would not have it otherwise. Then you
+can <em>hate</em> – and (I think) Martian hate is an emotion so black that the nearest human
+equivalent could only be called mild distaste.</p>
+</div></blockquote>
+<p>That such a word exists and is widely used in software development illustrates the high value
+of clear and understandable code.
+WETO software should avoid complexity where possible and favor readability over writability.
+Strive to create software that can be easily grokked by developers who do not have the current
+context, and remember that often these developers are domain experts rather than
+computer scientists.</p>
+<p>The designers of the Python programming language consider readability as a primary priority, and
+the most famous of the many Python language-development documents is
+<a class="reference external" href="https://peps.python.org/pep-0008/">PEP 8</a> which proposes a style guide for Python code.
+PEP 8 is summarized into 19 aphorisms (20 including one that’s implied) and is referred to as
+<a class="reference external" href="https://peps.python.org/pep-0020/">“The Zen of Python”</a>. Much of the WETO software portfolio is
+Python-based, so these guiding principles directly apply. However, these principles are
+programming language agnostic and eloquently describe the paradigm for developing
+extendable software.</p>
+<!-- Consider the readability of the following code snippets. Each line within a block accomplishes
+an equivalent task, but each uses a different level of obfuscation.
+
+```python
+# Get the shape of a Numpy array
+array = np.array(...)
+
+array.shape()
+np.shape(array)
+```
+
+```python
+
+```
+
+```python
+
+``` -->
+<section id="the-zen-of-python">
+<span id="zen-python"></span><h4><a class="toc-backref" href="#id19" role="doc-backlink">The Zen of Python</a><a class="headerlink" href="#the-zen-of-python" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="kn">import</span> <span class="nn">this</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren&#39;t special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you&#39;re Dutch.
+Now is better than never.
+Although never is often better than \*right\* now.
+If the implementation is hard to explain, it&#39;s a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let&#39;s do more of those!
+</pre></div>
+</div>
+</section>
+</section>
+<section id="architecture-and-design">
+<h3><a class="toc-backref" href="#id20" role="doc-backlink">Architecture and design</a><a class="headerlink" href="#architecture-and-design" title="Link to this heading">#</a></h3>
+<blockquote class="epigraph">
+<div><p>If you think good architecture is expensive, try bad architecture.</p>
+<p class="attribution">—Brian Foote and Joseph Yoder, Clean Architecture: A Craftsman’s Guide to Software Structure and Design</p>
+</div></blockquote>
+<p>In the development of any complex system, the design and it’s implementation are either
+explicit or implicit.
+Explicit design involves identifying relationships between modules, composition of data
+structures, and flow of data prior to writing code, whereas an implicit design evolves during the
+process of writing new code.
+In open source software, an explicit design process is critical to allowing the project
+to grow beyond a single developer, and the consequence of an implicit design process
+is the common case of technical debt.</p>
+<section id="software-design-process">
+<h4><a class="toc-backref" href="#id21" role="doc-backlink">Software design process</a><a class="headerlink" href="#software-design-process" title="Link to this heading">#</a></h4>
+<p>Primarily, an explicit design process involves identifying the fundamental principles
+of a particular design - how it is expected to function in various aspects.
+This process should result in two statements:</p>
+<ol class="arabic simple">
+<li><p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Parti_(architecture)">parti</a>, a description of the
+fundamental, driving design intent as a brief text (one or two sentences) or a
+simple diagram</p></li>
+<li><p>A list of requirements that the parti and it’s implementation should satisfy</p></li>
+</ol>
+<p>The <em>parti</em> is the abstract objective and the list of requirements are the criteria
+to verify that the implementation satisfies the parti.
+In other words, these are the tests for the design.
+Upon establishing this information, it should be codified into a design document and style
+guide that are made publicly available to all developers such as in online documentation.</p>
+<p>There are various levels of fidelity to consider when designing a software system:</p>
+<ul class="simple">
+<li><p>Level 0: Syntax and code style</p></li>
+<li><p>Level 1: Function scope, function signatures</p></li>
+<li><p>Level 2: Module composition</p></li>
+<li><p>Level 3: System composition</p></li>
+</ul>
+<p>Each should be addressed individually but referring to each other. For example, having a major
+design driver to limit complexity at Level 3 can be negated if complexity is allowed
+at Level 0. However, the definition of complexity at these levels are entirely different and
+should be directly defined.</p>
+<blockquote class="epigraph">
+<div><p>Architecture is a hypothesis that needs to be proven by implementation and measurement</p>
+<p class="attribution">—Tom Gilb, Clean Architecture: A Craftsman’s Guide to Software Structure and Design</p>
+</div></blockquote>
+<p>While having an explicit design process is important, it is not required to stick to a chosen
+design at all cost.
+Throughout the development of a software, the architecture and design should be regularly
+revisited and reevaluated given the new knowledge acquired during implementation.
+How a software is ultimately used and the problems faced cannot be known at design time,
+so developing a process for design validation is required.</p>
+</section>
+<section id="design-patterns">
+<h4><a class="toc-backref" href="#id22" role="doc-backlink">Design patterns</a><a class="headerlink" href="#design-patterns" title="Link to this heading">#</a></h4>
+<p>The software engineering community has created a wide range of
+<a class="reference external" href="https://en.wikipedia.org/wiki/Software_design_pattern#Classification_and_list">design patterns</a>
+to address specific design problems.
+These are often used as a reference for creating a specific architectural design,
+and they often focus on fidelity levels 1 and 2.
+Multiple design patterns can even be pieced together to create a high-level monolithic architecture.
+The benefits of adopting an existing design pattern are:</p>
+<ul class="simple">
+<li><p>The methods to describe the design pattern to new developers are already established</p></li>
+<li><p>Teams can work with the architecture in the abstract to develop their concrete customized
+implementation</p></li>
+<li><p>Ecosystems of third-party tools exist to leverage some of the common design patterns</p></li>
+<li><p>Some patterns can be easily replaced by others <em>in situ</em></p></li>
+</ul>
+<p>While software architecture and software design patterns are entire fields of knowledge,
+many resources exist to teach common methods.
+A few in depth references specifically relevant to WETO-supported research software are:</p>
+<ul class="simple">
+<li><p>Uncle Bob’s <a class="reference external" href="https://books.google.com/books/about/Clean_Architecture.html?id=uGE1DwAAQBAJ&amp;amp;source=kp_book_description">Clean Architecture: A Craftsman’s Guide to Software Structure and Design</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=UWmkj-9SdAI">IDEAS-ECP HPC Best Practices Webinar: Software Design Patterns in Research Software with Examples from OpenFOAM</a></p></li>
+<li><p>Architecture of Open Source Applications <a class="reference external" href="https://aosabook.org/en/#aosa1">Volume 1</a> and <a class="reference external" href="https://aosabook.org/en/#aosa2">Volume 2</a></p></li>
+</ul>
+</section>
+</section>
+<section id="version-control">
+<span id="id5"></span><h3><a class="toc-backref" href="#id23" role="doc-backlink">Version control</a><a class="headerlink" href="#version-control" title="Link to this heading">#</a></h3>
+<p>Version control, typically with <a class="reference external" href="https://git-scm.com">git</a>, is a tool for tracking the
+evolution of a project change by change establishing a history of changes.
+Each change, called a “commit”, is itself a version of the software, and, collectively,
+the changes provide a snapshot of thought processes and progression of work.</p>
+<p>Version control with git can seem like simply a mechanism to “save” the state of a document,
+and it is easy to relegate this process to a secondary concern in the development process.
+However, it carries far more meaning in the context of software extendability.
+Since the git system is decentralized, it allows multiple developers to make changes to a
+project concurrently.
+Git also provides a mechanism for resolving differences so that multiple changes can be merged
+together easily.</p>
+<p>In addition to the content of changes themselves, the connectivity between changes over the
+lifetime of a project is meaningful.
+The connectivity between commits is structured as a
+<a class="reference external" href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">directed acyclical graph (DAG)</a>.
+Each commit has a parent and each parent can have multiple children.
+This provides a mechanism for easily and accurately rolling back to the state of the project at any
+time in history.</p>
+<p>To best leverage the power of git to enable extendability, consider the following guidelines:</p>
+<ul class="simple">
+<li><p>It is reasonable to spend time crafting each commit and a sequence of commits.</p></li>
+<li><p>Each commit should optimize for readability in both the content of the changes and the message</p>
+<ul>
+<li><p>Keep changes within an easily communicated scope</p></li>
+<li><p>Avoid the temptation to mix formatting changes with algorithmic changes</p></li>
+<li><p>More smaller commits are generally better than fewer large commits</p></li>
+</ul>
+</li>
+<li><p>Practice editing a series of commits to ensure that the progress of work is captured accurately.</p></li>
+<li><p>Consider whether the commit history is concise and readable to people who are not the authors.</p></li>
+<li><p>Become familiar with the following actions:</p>
+<ul>
+<li><p>Interactive rebase</p></li>
+<li><p>Cherry-pick</p></li>
+<li><p>Squash</p></li>
+<li><p>Edit a commit message</p></li>
+</ul>
+</li>
+<li><p>Commit messages should be short, and it is a convention to limit them less than 50 characters.</p></li>
+<li><p>An additional line can be included as a longer description of the commit beneath the
+50 character line. The second line is typically limited to 70 characters, but it is
+considered reasonable to use as much space as needed.</p></li>
+</ul>
+<!--
+TODO
+Add examples of good and bad commit messages
+
+Update README
+Update README
+Update README
+Update README
+
+Update solver
+
+End of day updates
+
+Fix bug
+-->
+</section>
+<section id="collaborative-workflows-with-github">
+<span id="github"></span><h3><a class="toc-backref" href="#id24" role="doc-backlink">Collaborative workflows with GitHub</a><a class="headerlink" href="#collaborative-workflows-with-github" title="Link to this heading">#</a></h3>
+<p>The processes through which developers interact with a software and other developers is
+an essential component of extendability.
+These processes should generally strive for efficiency while minimizing overhead.
+Automated processes are better than manual processes, and objective is better than subjective.
+The majority of collaborative software development processes occur on the
+<a class="reference external" href="https://github.com">GitHub</a> platform and automated processes leverage GitHub’s free
+cloud-based resources.</p>
+<p>GitHub and git (see <a class="reference internal" href="#version-control"><span class="std std-ref">Version control</span></a>) are tightly connected, but they are different
+systems and serve different purposes in the development process.
+Git is a version control system for tracking and merging changes to a software.
+GitHub is a platform for orchestrating and coordinating the various processes that happen
+around the development cycle.
+GitHub activities add context on top of the individual changes captured in commits.
+Whereas commits often capture low-level information, GitHub activities can map the low level
+details to high-level efforts.
+GitHub provides extensive <a class="reference external" href="https://docs.github.com/en/get-started/quickstart/git-and-github-learning-resources">training material</a>
+for git as well as GitHub features.</p>
+<p>The primary GitHub features are described below, and a typical sequence of events across these
+features is diagramed.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/features/actions">Actions</a>: This is a full-featured cloud computing
+environment that is typically used for automating software quality processes such as
+running tests, compiling software for release and distribution, and compiling and deploying
+online documentation.</p></li>
+<li><p><a class="reference external" href="https://docs.github.com/en/discussions">Discussions</a>: This is typically the starting point
+for any collaboration. Create a discussion topic and engage with other model stakeholders
+to define the idea and develop a proposed implementation.</p></li>
+<li><p><a class="reference external" href="https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues">Issues</a>:
+Document the proposed solution to a problem or implementation of a new feature as outlined
+in the corresponding Discussion. Finalize the description and outline test cases to verify
+the idea.</p></li>
+<li><p><a class="reference external" href="https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects">Projects</a>:
+Collect Issues, Pull Requests, and generic cards to establish a relationship across all
+ongoing works in progress. This is typically most useful for large development efforts
+and prioritizing work for upcoming releases.</p></li>
+<li><p><a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">Pull Requests</a>:
+Pull Requests (PR) are a request to accept a change into a branch. This typically happens
+across forks of a repository, but it can also happen between branches of the same fork.
+During the implementation of an Issue, open a pull request to communicate that work is
+ongoing. This is also the venue for code reviews.</p></li>
+<li><p><a class="reference external" href="https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases">Releases</a>:
+A number of accepted pull requests can be aggregated to comprise one release, and this is
+listed in a project’s GitHub Releases page along with release notes to describe the changes
+and communicate relevant details.</p></li>
+</ul>
+<div class="mermaid">
+            sequenceDiagram
+    autonumber
+
+    participant Community
+    participant Developer
+    participant Maintainer
+
+    activate Community
+
+    Community -&gt; Community: Create Discussion describing a gap or feature
+
+    activate Developer
+    activate Maintainer
+    loop Design Discussion
+        Maintainer-&gt;&gt;Community: Feedback
+        Developer-&gt;&gt;Community: Feedback
+        Developer-&gt;&gt;Maintainer: Propose implementation
+    end
+    deactivate Community
+
+    Developer-&gt;Developer: Open an Issue to finalize proposal
+    Maintainer-&gt;Maintainer: Include Issue in a Project
+
+    loop Implementation &amp; Review
+        Developer-&gt;&gt;Maintainer: Submit a Pull Request
+        Maintainer-&gt;&gt;Developer: Provide code review feedback
+    end
+    deactivate Developer
+
+    Maintainer-&gt;&gt;Community: Merge Pull Request
+    deactivate Maintainer
+        </div><p>The combination of git and GitHub provides a powerful mechanism to capture design intent,
+factors that lead to particular decisions, and the evolution of a project for future reference.
+It is important carefully craft the messages to avoid washing out information with noise.
+Consider the following guidelines when engaging on GitHub.</p>
+<ul class="simple">
+<li><p>Descriptions of any activity should be well scoped and easily understandable.</p></li>
+<li><p>Pictures really are worth 1,000 words. Include a diagram, plot, screenshot, or picture
+when it will add clarity.</p></li>
+<li><p>Prefer actual text over of screenshots of text. GitHub is searchable, so text provides more
+searchable content whereas screenshots do not. Additionally, text-based code snippets can be
+copied easily by other users.</p></li>
+<li><p>Establish a practice of assigning responsibility to a core team member for each Issue and
+Pull Request to avoid ambiguity about how these will be addressed.</p></li>
+</ul>
+</section>
+<section id="pull-requests">
+<span id="pullrequests"></span><h3><a class="toc-backref" href="#id25" role="doc-backlink">Pull Requests</a><a class="headerlink" href="#pull-requests" title="Link to this heading">#</a></h3>
+<p>A pull request, or “PR”, is a request to merge a particular set of code changes into another
+instance of the software, typically an agreed upon “main” version.
+Pull request descriptions should include contextual information regarding the code change.
+The objective is to convince reviewers and maintainers that the new code is in a good state,
+and that it’s inclusion would be a benefit to the project. This typically involves a contextual
+description of the change, an explanation of why the change is valid, and an overview of the
+tests added to the test suite to demonstrate and exercise the new code.</p>
+<p>The size and scope of a pull request should be chosen so that it is both easy to explain and
+easy to review.
+It is common to create many pull requests in the development of a single
+feature as this process enables periodically syncing forks or branches and supports
+milestones or periodic check-ins throughout development.
+The primary objective is to optimize for readability in the pull request description as well as
+the code changes themselves.</p>
+<p>Consider pull requests titles and descriptions as documentation that will be relevant to
+future developers.
+When a pull request is merged, it can either be combined into one commit (squash and merge)
+in the destination branch or included through a merge-commit.
+The former does not maintain the commit history of the working branch while the latter does.
+The squash-and-merge approach is often preferred by project maintainers due to it’s simplicity,
+and in this case the title of the pull request becomes the commit message.
+Since merging the pull request directly affects the commit history of the destination branch,
+the review and merge process should also follow the <a class="reference internal" href="#version-control"><span class="std std-ref">Version control</span></a> guidelines.
+Finally, the release process through GitHub Releases can automatically construct
+release notes from the title of all pull requests merged since the previous release.</p>
+<p>While the details of workflows around defining, designing, and implementing new development
+efforts should be identified explicitly following the guidance in <a class="reference internal" href="#github"><span class="std std-ref">Collaborative workflows with GitHub</span></a>, pull requests,
+in practice, are often a good place to iterate collaboratively on the design and implementation
+details.
+Pull request reviews should have the following characteristics:</p>
+<ul class="simple">
+<li><p>Be very verbose with efficient but specific and complete feedback</p></li>
+<li><p>Be constructive rather than destructive; blame (negative) is nearly always irrelevant,
+and credit (positive) is nearly always appreciated</p></li>
+<li><p>Call out good ideas as well as bad ideas</p></li>
+<li><p>Include snippets of code to exercise portions of the changes</p></li>
+<li><p>Include plots or graphics showing the impact of the changes</p></li>
+<li><p>Refer to precedent or contextual conventions</p></li>
+<li><p>Refer to design documentation and style guides</p></li>
+</ul>
+<p>The <a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/incorporating-feedback-in-your-pull-request">GitHub Pull Request Review documentation</a>
+provides a detailed guide on using the various features to suggest and integrate
+code review feedback.</p>
+</section>
+<section id="continuous-integration-automating-tests-compliance-and-delivery">
+<span id="continuous"></span><h3><a class="toc-backref" href="#id26" role="doc-backlink">Continuous integration: automating tests, compliance, and delivery</a><a class="headerlink" href="#continuous-integration-automating-tests-compliance-and-delivery" title="Link to this heading">#</a></h3>
+<p>The term “continuous integration”, or “CI”, is often used to refer to any of the many
+automated systems that support software quality.
+In it’s essence, continuous integration refers to the practice of deploying a change in
+the code directly into the production or released version.
+This practice is enabled by constructing a system of quality check infrastructure that gives
+maintainers the confidence to accept a change and release immediately.
+The “continuous” aspect refers to the automated nature of the quality check systems.
+Ideally, full continuous integration requires that all characteristics and potential
+impacts of a code change are tested and validated automatically and without human
+input, such as:</p>
+<ul class="simple">
+<li><p>Requiring that new code is covered by unit tests, integration tests, and regression tests</p></li>
+<li><p>Checking that impacts to computational cost (speed) are within a threshold</p></li>
+<li><p>Checking that memory impacts are within a threshold</p></li>
+<li><p>Validating documentation changes and functionality</p></li>
+<li><p>Linting for code syntax</p></li>
+</ul>
+<p>It can be helpful to break the topic of CI into three general areas:</p>
+<ul class="simple">
+<li><p>Continuous testing (CT)</p></li>
+<li><p>Continuous compliance (CC)</p></li>
+<li><p>Continuous delivery (CD)</p></li>
+</ul>
+<p>Continuous testing is established by adopting a testing framework and ensuring that all
+new code is well tested. While automatically testing the <em>quality</em> of test may be impractical,
+it is simple and helpful to automatically check the <em>quantity</em> of tests to ensure that new
+code is covered.
+For the same of a user-friendly CT pipeline, consider grouping tests into categories
+that can be run in parallel by the automated system.
+Also, minimize the time required to execute the test suite so that developers get
+the automated feedback as soon as possible.</p>
+<p>Continuous compliance is related to automatically checking for code style, complexity,
+existence of docstrings or other types of documentation, and any other requirements
+that describe aspects of the code itself.
+A common method is to use a linter for the programming language used.
+Most linters are high configurable so it can be tailored to the needs and style of
+the development team.
+This step typically happens very quickly, so execution time is usually not a concern.</p>
+<p>Continuous delivery handles how the software is exported to users for consumption.
+For web-based software, this involves deploying to a server, whereas modeling and analysis
+libraries are typically delivered via package managers or compiled binaries.
+The “continuous” aspect of CD refers to the practice of automatically pushing the
+“released” product upon any change to the primary branch or via a periodic semi-automated
+release process.</p>
+<p>All aspects of CI contribute to the quality of a software project, and a full ecosystem
+of open source, freely available infrastructure is available to address them all.
+Ultimately, though, the true beneficiary of CI pipelines are the developers and maintainers
+since major portions of quality enforcement and distribution are automated.
+Without this infrastructure, code reviews can be prohibitively time consuming and error prone,
+and the release process can take hours or days.
+By committing to the initial investment and regular maintenance, computers handle
+these detailed and repetitive tasks.</p>
+<p>Given the inherent challenges in managing groups of people with various software
+development styles and opinions, establishing the automated systems described here
+can help to align expectations around minimum standards for acceptance of code while
+reducing the burden on a project’s “benevolent dictator” or gatekeeper.
+It is recommended to establish these processes at the onset of a software project, and
+continuously adjust as needed.</p>
+<p>For reference, a typical CI pipeline for a Python package is shown below where the square
+components are GitHub Actions steps.</p>
+<div class="mermaid">
+            graph LR
+
+    A((&quot;
+    GitHub Event
+    (i.e. release)
+    &quot;))
+    subgraph Continuous Testing
+        B[&quot;Run test suite&quot;]
+    end
+    subgraph Continuous Compliance
+        C[&quot;Run linters&quot;]
+        D[&quot;Run performance and memory checks&quot;]
+        E[&quot;Check for docstrings&quot;]
+    end
+    F{&quot;Pass?&quot;}
+    G[&quot;Notify author&quot;]
+    subgraph Continuous Deployment
+        H[&quot;Build for conda&quot;]
+        I[&quot;Build for PyPI&quot;]
+        J[&quot;Build documentation&quot;]
+        K[&quot;Publish to conda-forge&quot;]
+        L[&quot;Publish to PyPI&quot;]
+        M[&quot;Deploy documentation&quot;]
+    end
+
+    A --&gt; B
+    A --&gt; C
+    A --&gt; D
+    A --&gt; E
+
+    B --&gt; F
+    C --&gt; F
+    D --&gt; F
+    E --&gt; F
+    
+    F --&gt;|No| G
+    F --&gt;|Yes| H
+    F --&gt;|Yes| I
+    F --&gt;|Yes| J
+    H --&gt; K
+    I --&gt; L
+    J --&gt; M
+        </div></section>
+</section>
+<section id="methodologies-for-communicating-intent-and-verifying-implementation">
+<span id="communicating-design"></span><h2><a class="toc-backref" href="#id27" role="doc-backlink">Methodologies for communicating intent and verifying implementation</a><a class="headerlink" href="#methodologies-for-communicating-intent-and-verifying-implementation" title="Link to this heading">#</a></h2>
+<p>Software systems always have an architectural design, but it may be explicitly or implicitly
+developed. With an implicit architecture, some general ideas may be communicated, but the
+majority of information is left to readers of the code to understand. Though common in
+research software, this practice can work against efforts to improve the extendability of
+a software (see <a class="reference internal" href="#extendability"><span class="std std-ref">Extendability</span></a>). The practice of explicitly designing a software
+architecture is highly recommended, but it is outside the scope of this report.
+However, a minimum practice of communicating elements of software design should be
+incorporated into WETO software.</p>
+<p>The methods for documenting and communicating software architecture and design vary
+depending on the content and message to convey.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>one</p></th>
+<th class="head"><p>two</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>a</p></td>
+<td><p>b</p></td>
+</tr>
+</tbody>
+</table>
+<p>To understand how a change fits into the big picture, it is required to have a sense for the picture from the start.
+Develop diagrams for code architecture and regularly check and update them as the architecture changes.</p>
+<p>Types of diagrams:</p>
+<ul class="simple">
+<li><p>State / flow diagrams</p></li>
+<li><p>Class hierarchy</p></li>
+<li><p>Data construction and operation - Show a representative problem describing how operations happen on data in various contexts (serial vs parallel, cpu vs gpu)</p></li>
+</ul>
+<p>Identify and communicate the <em>parti</em>.</p>
+<p>TODO: add descriptions and examples of UML
+TODO: Describe communicating design intent</p>
+</section>
+<section id="appendix-rse-the-engineers-behind-research-software">
+<span id="rse"></span><h2><a class="toc-backref" href="#id28" role="doc-backlink">Appendix - RSE: The engineers behind research software</a><a class="headerlink" href="#appendix-rse-the-engineers-behind-research-software" title="Link to this heading">#</a></h2>
+<p>Research software exists in a unique environment where the majority of users and developers
+share expertise within a specific field, and funding mechanisms are often tied to results
+from using the software rather than to the software itself.
+Because of these nuances of the research software environment, the incentives to create high
+quality software are often misaligned with the career incentives for the engineers
+creating the software.
+Without the appropriate incentives, the best practices listed in this report will never gain
+adoption, and WETO software will suffer in all of the areas listed.
+For the sake of the WETO software portfolio and the researchers working in these groups,
+it is important to directly consider the needs and expectations of the people
+responsible for designing and implementing research software projects.</p>
+<p>The term research software engineer (RSE) is defined by the
+<a class="reference external" href="https://society-rse.org/about/">UK-RSE Society</a> as:</p>
+<blockquote>
+<div><p>A Research Software Engineer (RSE) combines professional software engineering expertise with
+an intimate understanding of research.</p>
+</div></blockquote>
+<p>While all modern research typically involves using research software, it is common for researchers
+to focus skill development on either the research domain or the computational considerations
+involved in implementing the research in software.
+The research environments in academia and government labs are often structured to incentivize
+academic publication, so the resulting teams are commonly made up of mostly domain researchers
+and a minority of research software engineers.
+The domain researchers inform the needs of the research software and are the primary users.
+The RSE’s design and develop the software systems as well as manage various IT responsibilities
+for the group such as creating computer-based workflows, managing data, constructing web-based
+research artifacts, and training colleagues on best practices in research computing.</p>
+<p>In this context, note the difference between computer science and software engineering (both
+descriptions taken from Wikipedia):</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Computer_science">Computer science</a> is the study of
+computation, information, and automation.
+Computer science spans theoretical disciplines (such as algorithms, theory of computation,
+and information theory) to applied disciplines (including the design and implementation of
+hardware and software).</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Software_engineering">Software engineering</a> is an
+engineering-based approach to software development. A software
+engineer is a person who applies the engineering design process to design, develop, maintain,
+test, and evaluate computer software. The term programmer is sometimes used as a synonym,
+but may emphasize software implementation over design and can also lack connotations of
+engineering education or skills.
+Engineering techniques are used to inform the software development process, which involves the
+definition, implementation, assessment, measurement, management, change, and improvement of
+the software life cycle process itself.</p></li>
+</ul>
+<section id="rse-value-recognition">
+<h3><a class="toc-backref" href="#id29" role="doc-backlink">RSE value recognition</a><a class="headerlink" href="#rse-value-recognition" title="Link to this heading">#</a></h3>
+<p>Writing code and designing software systems are entirely different things, and the latter
+must be recognized relative to the value that it adds to the research process.
+Software design and software architecture are complicated topics covered in
+<a class="reference external" href="https://www.amazon.com/s?k=software+design&amp;amp;i=stripbooks&amp;amp;crid=2L9GNOIMWHMFD&amp;amp;sprefix=software+design%2Cstripbooks%2C166&amp;amp;ref=nb_sb_noss_2">text books</a>,
+<a class="reference external" href="https://web.stanford.edu/~ouster/cs190-winter23/">courses at top universities</a>,
+and <a class="reference external" href="https://www.researchgate.net/search.Search.html?query=software+architecture&amp;amp;type=publication&amp;amp;subfilter%5BpublicationType%5D=article%2Fbook&amp;amp;subfilter%5BstartYear%5D=2022">academic publications</a>.
+The process of creating a software system given various requirements is a <em>design process</em>.
+It involves stating requirements, iterative design, and validation and verification of the design.
+It can take years to fully accomplish a design objective, and at the same time the landscape of
+computers and software development is constantly changing.
+Additionally, software is rarely created by one person, so RSE’s have to manage multiple
+contributors making changes simultaneously while also striving to meet the needs of the project.
+Therefore, consider it a best practice within the context of WETO software to recognize
+the contributions and value of RSE’s within the labs.
+Avoid trivializing software design as “programming”, and consider that many RSE’s have engineering
+or science degrees and treat their work as engineering or science.</p>
+</section>
+<section id="career-growth-and-trajectory">
+<h3><a class="toc-backref" href="#id30" role="doc-backlink">Career growth and trajectory</a><a class="headerlink" href="#career-growth-and-trajectory" title="Link to this heading">#</a></h3>
+<p>In addition to acknowledgement of work and value added, it is important to provide meaningful
+career guidance to RSE’s to both serve their personal goals and ensure
+that the projects have well-rounded contributors. RSE’s should have some level of domain
+experience; that is to say that they should <em>use</em> as well as <em>develop</em> their software.
+RSE’s should know the context in which their software exists.
+They should be experts in the implementation and very good in the usage.
+A characteristic career trajectory within the national lab environment may take the following path:</p>
+<ul class="simple">
+<li><p>Year 1: Implement models, develop tests and documentation</p></li>
+<li><p>Year 2: Co-author analyses, improve modeling, inform AOP</p></li>
+<li><p>Year 3: Lead author analyses, guide future development efforts, writing AOP</p></li>
+<li><p>Year 4: Proposing new work, seeking funding to expand the software project</p></li>
+<li><p>Year 5: Inform center-wide software culture and practices</p></li>
+</ul>
+<p>In general, the amount of code written by a RSE should peak around year 2 or 3 and
+then taper off. The responsibility for creating software should not be entirely removed, but
+the majority of involvement in software development should be code review, design, and
+project planning. As in any career advising, the details should be a discussion between RSE, their
+direct manager, and the center or lab leadership.</p>
+<!--
+## Ideas
+
+**Optimize for readability not writability.**
+Don't assume your code makes sense to everybody else. Use natural language to express ideas in
+the documentation and code comments. As much as possible, write your code so that it reads close
+to natural language. Language semantics and performance considerations can be in contrast to
+this, so it is up to the developer to find the right balance of expression of intent and
+achievement of the requirements of the code.
+
+Consider how users and developers will be able to come up to speed.
+- Are algorithms documented in words and graphics?
+
+How are design intents communicated?
+- These things should not live in someone's head. In that case, they're as good as gone.
+It only exists if it has been written down.
+
+Documentation and tests are not just a box to check so that the process can move forward.
+It is an integral part of software. Software with poor quality documentation and tests is worse
+than software without documentation and tests, but both of these elements are a necessary
+consideration for collaboration. As in, if you're writing code for yourself and you don't value
+tests and documentation, no problem because its your own problem. However, if you're writing
+code so that other people can use it, it is detrimental to submit code with no or poor quality
+tests and documentation. This detracts from the project, adds noise to the code, and overall
+increases the barrier to entry and understanding for the entire software.
+
+Consider how a change fits into the big picture. The typical process is to figure out a
+way to "add code" to enable a feature. Instead, consider how to "incorporate code" to
+enable a feature. Adding-to without considering the whole continuously expands the scope and size
+of the code while increasing complexity, and this is unsustainable for future development and
+maintenance efforts. Consider how to incorporate a feature into the
+existing design or redesign the software to support both the current context and the
+new feature.
+
+Write a pull request so that it is easy to review. Make it plain what your changes are and
+why they were necessary and better than before.
+
+The general idea in software design is to create low level tools that you can use and reuse
+again and again at the high level. You know you're doing things right when adding new
+features involves writing very little new code and is mostly using existing code in new
+ways. Thats not to say its easy, but at least you've given yourself the tools with
+which to do your future work.
+
+Whats the purpose of our software?
+Who is the target audience?
+How long do we expect it to be relevant?
+- This should be part of the design process
+- Periodically reconsider whether the recent work and planned work is in line with these expectations
+
+**Require each project to develop a software engineering road map as well as a capabilities road map**
+
+
+**Documentation** Describe the diataxis framework
+
+
+**Reproducibility**
+
+Talk about code reviews and what to consider when reviewing and proposing code.
+- Reviews should be verbose and to the point
+- Consider the big pictures: what do these changes add to the project? how is it better than before?
+- Run the code! Try to break it. Really exercise the new code. It's not enough to simply read it.
+-  
+
+
+Design in such a way to allow for future flexibility
+- Think about systems in discrete chunks rather than monoliths
+- Consider how the system will scale in scope and in problem size
+
+Design for usability
+- Trap errors before they manifest into larger problems that are difficult to debug through
+    validation of input files and function inputs
+- Adopt a logging framework
+    - Funnel messages to a particular place (terminal, file, nowhere) very easily
+    - Format messages to call out particular pieces of information
+    - Always include context!
+        - Users and developers will not know what you mean by "Invalid value"
+        unless they also have some context. Try this: "Invalid value in
+        ClassName.well_named_function(); wind speed must be positive".
+- Avoid information overload. It's too easy to ignore messages from a tool when there are
+    too many words. Respect the user's attention, only give messages that are absolutely critical.
+- Assume warnings will not be read - trap errors and inconsistencies instead.
+- Avoid making decisions on behalf of the user
+    - It's fine to provide default values, but its generally better to raise an error
+    when an invalid input is given.
+    - It may be tempting to use default values for new inputs to avoid breaking API's, but
+    remember that this adds complexity for the user. These inputs now have the possibility
+    of being null or the value itself. If this input enables / disables a feature, this should
+    be made abundantly clear to the user.
+
+-->
+<!--
+# Notes
+
+https://quarto.org/docs/gallery/
+- See the article section
+
+UWashington eSciences Institute paper on the 3R development practices:
+- Readability
+- Resilience
+- Reuse
+This nicely highlights writing code for particular audiences.
+https://hdsr.mitpress.mit.edu/pub/f0f7h5cu/release/2
+
+GitHub README blog post: how open should your open source be?
+It also addresses the various audiences and how to serve the developer community vs user community
+https://github.com/readme/featured/how-open-is-open-source?mc_cid=50779693b9&mc_eid=2d4b086884
+
+Documentation as a way to build community
+https://labs.quansight.org/blog/2020/03/documentation-as-a-way-to-build-community
+-->
+<!-- (accuracy)=
+## Accuracy
+
+Validation - Are you building the right thing?
+Verification - Are you building the thing right?
+
+- Barry Boehm, Software Engineering Economics, 1981
+
+Test driven development - formalize the ideas that drive development.
+A portion of code should not be added without a formal proof of correctness and robustness.
+Consider testing like writing a report - prove to the reader that it is correct and should be accepted.
+
+Phenomenon identification and ranking table
+- David Maniaci -->
+<!-- (stability)=
+## Code Stability
+
+The considerations given to long term stability of a software project directly correlate to the
+lifespan and ultimate impact of the project.
+When a software project has a stable code, all users can have consistent expectations
+and the [extendability](extendability) is greatly improved.
+In this context, stability means changing the source code in intentional and controlled ways
+so that all users are able to adopt the changes with minimal effort.
+Establishing code stability typically involves creating infrastructure to address needs around
+dependency management, testing, profiling, and documentation.
+
+Code stability is most practically address through automated processes.
+This infrastructure is typically automated through services like GitHub,
+and it is targeted at developers in two categories:
+- **Maintainers** who will keep the infrastructure running, update dependency versions and API's,
+    and address bugs
+- **Extenders** who will periodically return to the software to add new features
+
+Nuances of research software:
+- The landscape is broad and the associated ecosystem changes very quickly but adoption is very slow
+- iOS for example runs on a small set of well-known hardware
+- Research funding cycles do not include maintenance
+
+The maintenance component of sustainability deals with ensuring that, even with no changes
+internally, the software can continue to function with changes that happen externally.
+This can involve updates to the software to support new operating systems, virtual machines,
+runtime environments, and hardware components.
+A recent example is the introduction of Apple computers with Arm-based CPU's rather than the
+canonical Intel x86 architecture.
+This change resulted in unusable ecosystems of software including compilers, interpreters,
+debuggers, and profilers that required upgrades to support the new systems.
+
+The extension component ensures that developers who work to add new features and improvements are
+able to determine whether their change had the intended effect and no side effects.
+ -->
+<!-- ## WETO Software Manifesto, in short
+
+NOTE: All these things should help the process of creating software, not hinder it.
+Find the balance of providing value while also enabling development work to continue
+moving forward.
+
+
+The purpose of each software project, the reason for it's existence and idealized impact, will
+be unique to the project based on it's stakeholders, funding mechanisms, and topic area.
+A common thread across all projects, though, is to apply principles of Design, such as
+[Design Thinking](https://designthinking.ideo.com), in planning development efforts.
+It is often useful to consider varying fidelities of time such as short term feature
+implementations as well as long term strategic targets.
+A particularly relevant component of design thinking is to identify the question or need that
+a software project and the activities in developing it will answer or resolve.
+As a framework for identifying these targets, ask the following questions of a project:
+- What is its purpose?
+- Who will use it?
+- How will they use it?
+- For how long should it be active or relevant?
+- What is the intended impact?
+
+In all development activities, the user should be considered.
+After all, the current developers will also be end-users at some time in the future.
+People outside the current development process, including active developers at another time,
+will not have the current context.
+All code, algorithms, procedures, documentation, and associated work should maintain this
+perspective.
+Include details so that a newcomer can reasonably understand the meaning and impact of any
+part of the project - and beware of underestimating what is reasonable or overestimating
+human memory or ability to read the docs.
+Consider an idea incomplete until someone else can accurately communicate it back.
+
+Generally, research software should be predictable and easy.
+- Don't be clever
+- Use ubiquitous tools
+- Basically, prevent users from having to go down rabbit holes to understand some nuance of your code
+A 
+Study and adopt the [Zen of Python](zen_python). Consider them the Zen of WETO Software Development.
+
+
+Who are the stakeholders?
+- Supporters: Funders and programmatic leaders (PI's)
+- Two kinds of users:
+    1. Practitioners who run the software and evaluate results
+    2. Developers who extend or integrate the software into other systems
+
+How will stakeholders interact with the software?
+- Supporters need text-based and graphical information
+- Address the anticipated needs of the target users
+- Make installation as absolutely easy as possible; automate distribution and installation and
+    focus time on documentation for getting users started
+
+How will practitioners "level up"?
+- Design software behavior and interfaces to be consistent and predictable
+- Provide quality error messages with contextually relevant information
+
+How will developers extend the software without breaking it?
+- Design the architecture so that new features can be clearly scoped within the context of
+    the larger framework
+- Use simple code style (syntax) unless obfuscation is absolutely critical
+    - Choose common libraries with healthy developer ecosystems
+    - Use version control to manage concurrent work
+    - Leverage GitHub features like Pull Requests and Issues to document issues, propose
+        solutions and requirements, and provide code review feedback
+    - 
+
+**Point out that one overarching theme is to DOCUMENT! Write, draw, model - whatever you need - to
+communicate the ideas in your head. If you aren't able to make someone else understand your idea,
+it might as well not exist.
+
+Additional considerations specific to research software:
+- Dont be clever
+    - Ubiquity is essential in research software. Use common standards and conventions.
+    - Many developers are not specialists in software development. Consider them as first-order
+    users and meet their needs. Obfuscated meaning through syntactic sugar degrades the
+    extendability of the software, in general. See the next line.
+- Keep it super simple (KISS)
+
+Software projects exist in varying levels of maturity.
+These best practices should be applied in proportion to the maturity of the project.
+
+consider two kinds of "users":
+- Developers - write new code or modify existing code including infrastructure and documentation
+- Practitioners - execute the software either directly or as a part of another system
+
+Why we care about software quality
+- Collaboration
+- Workflows
+- Accessibility -->
+<!-- ## Call To Action
+
+Research software, in general and especially under WETO support, exists in a continuum of
+funding levels, researcher / developer resources, and research need, and there's always
+a tension between creating high quality, robust software and accomplishing the needs
+of the research project.
+While it can be tempting to choose an all-or-none approach to software quality, it is
+more practical to find the balance that accomplishes the needs of the project itself.
+**The absolute first step in developing WETO-supported research software should always
+be identifying and communicating (i.e. writing in a GitHub Discussion, README file, or 
+online documentation) the target level of maturity and professionalism in a particular
+software project.**
+This section should serve as a checklist of low barrier to entry software quality
+infrastructure and processes that can be adopted in most projects.
+
+Automate the following:
+- Testing: run the full test suite for every commit in less than 30 minutes
+- Performance profiling: include a statistical measure of performance for each commit
+- Code coverage: report code coverage to a coverage dashboard service (codecov, coveralls)
+- Distribution: build and distribute to all package managers for every release
+- Documentation Hosting: use a service to compile documentation from markup files (md, rst, etc)
+    using a mature framework (jekyll, jupyter-book, etc)
+
+Adopt a framework for testing:
+- pytest for Python
+- google test for C++
+
+
+Develop a style guide
+- One for syntax and code style
+- Another for architecture and design style
+- This is most relevant for long term software projects, but it can be useful to articulate
+    these ideas even for yourself. As in, in the course of developing various projects, iterate
+    on your own personal style guide.
+- Start with [pep8](https://pep8.org) and customize for yourself and your projects
+
+
+Adopt a framework for constructing documentation:
+- Jekyll
+- Jupyter-book
+- Sphinx
+And host it using a typical service
+- GitHub Actions
+- readthedocs
+
+Develop a culture of discussing the features in the software outside of the context of the software, first.
+Then, relate it to the software.
+A common method for this is a design document where new work is described, scoped, prototyped,
+and validated using plain language, graphics, and math.
+
+Write a design document:
+- Identify target users
+- Describe broad themes in the design - What are the objectives of the software architecture?
+- Prototype intended uses like a storyboard
+
+Submit to Journal of Open Source Software (JOSS) -->
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./software_dev"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../portfolio_analysis/attributes_schema.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Attribute Schema</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="developer_resources.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Developer Training</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-best-practices">Summary of best practices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessibility">Accessibility</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisite-knowledge">Prerequisite knowledge</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution">Distribution</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usability">Usability</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#user-interface">User interface</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#command-line-interface">Command line interface</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#input-and-output-files">Input and output files</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-messages">Error messages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata">Metadata</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extendability">Extendability</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-style">Code style</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-zen-of-python">The Zen of Python</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture-and-design">Architecture and design</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#software-design-process">Software design process</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#design-patterns">Design patterns</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#version-control">Version control</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#collaborative-workflows-with-github">Collaborative workflows with GitHub</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pull-requests">Pull Requests</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-integration-automating-tests-compliance-and-delivery">Continuous integration: automating tests, compliance, and delivery</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methodologies-for-communicating-intent-and-verifying-implementation">Methodologies for communicating intent and verifying implementation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-rse-the-engineers-behind-research-software">Appendix - RSE: The engineers behind research software</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rse-value-recognition">RSE value recognition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#career-growth-and-trajectory">Career growth and trajectory</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Rafael Mudafort
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

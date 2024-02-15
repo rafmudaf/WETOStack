@@ -182,9 +182,12 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">News and Events</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../news/latest_news.html">Latest News</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../news/latest_news.html">Latest News</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../news/2024-02-15-openfast_conda.html">OpenFAST on conda-forge</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../workshops/nawea_2023.html">2023 NAWEA / WindTech Workshops</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../workshops/workshop.html">2023 Model Owners Workshop</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../workshops/workshop.html">2023 Model Owners Workshop</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../workshops/workshop_report.html">Workshop Report</a></li>
 </ul>
 </li>
@@ -194,7 +197,7 @@
 <li class="toctree-l1"><a class="reference internal" href="software_list.html">Software Listing</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Software Attributes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technical_areas/overview.html">Technical Areas</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../capabilities/overview.html">Capabilities</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../capabilities/overview.html">Capabilities</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../capabilities/aero.html">Aerodynamics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../capabilities/system_design.html">System Design</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../capabilities/wake_loss_wfc.html">Wake Loss and Wind Farm Controls.</a></li>
@@ -512,12 +515,12 @@ Instead, they can be filtered by searching for a string with the following Seque
 </pre></div>
 </div>
 <div class="output text_html"><style>
-  #dp-2f82e6c53cfe4845aeb1d6d0e71f6d69 {
+  #dp-29e9c65bd87a4d1aaa46795e8d2ceeff {
     width: 1px;
     min-width: 100%;
   }
 </style>
-<iframe id="dp-2f82e6c53cfe4845aeb1d6d0e71f6d69" srcdoc="&lt;!DOCTYPE html&gt;
+<iframe id="dp-29e9c65bd87a4d1aaa46795e8d2ceeff" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
   &lt;head&gt;
 &lt;meta charset=&quot;UTF-8&quot; /&gt;
@@ -572,7 +575,7 @@ Instead, they can be filtered by searching for a string with the following Seque
 </iframe>
 <script type="module">
   import { iframeResize } from "https://datapane-cdn.com/v0.17.0/report/index.es.js";
-  iframeResize({ log: true, checkOrigin: false }, "#dp-2f82e6c53cfe4845aeb1d6d0e71f6d69");
+  iframeResize({ log: true, checkOrigin: false }, "#dp-29e9c65bd87a4d1aaa46795e8d2ceeff");
 </script>
 </div></div>
 </div>
@@ -602,19 +605,19 @@ Instead, they can be filtered by searching for a string with the following Seque
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1931/3124008716.py:10: FutureWarning: In a future version of pandas all arguments of DataFrame.any and Series.any will be keyword-only.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1894/3124008716.py:10: FutureWarning: In a future version of pandas all arguments of DataFrame.any and Series.any will be keyword-only.
   turbine_df = turbine_df[ pd.DataFrame( turbine_df[&quot;scope&quot;].tolist() ).isin( [&quot;turbine&quot;, &quot;any&quot;] ).any(1).values ]
 /opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/datapane/common/df_processor.py:26: FutureWarning: pandas.Int64Index is deprecated and will be removed from pandas in a future version. Use pandas.Index with the appropriate dtype instead.
   elif isinstance(df.index, pd.Int64Index):
 </pre></div>
 </div>
 <div class="output text_html"><style>
-  #dp-b86f24eb2c87473499fe76126b386e94 {
+  #dp-10255361a9ba40bd902ed648b18f831a {
     width: 1px;
     min-width: 100%;
   }
 </style>
-<iframe id="dp-b86f24eb2c87473499fe76126b386e94" srcdoc="&lt;!DOCTYPE html&gt;
+<iframe id="dp-10255361a9ba40bd902ed648b18f831a" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
   &lt;head&gt;
 &lt;meta charset=&quot;UTF-8&quot; /&gt;
@@ -669,7 +672,7 @@ Instead, they can be filtered by searching for a string with the following Seque
 </iframe>
 <script type="module">
   import { iframeResize } from "https://datapane-cdn.com/v0.17.0/report/index.es.js";
-  iframeResize({ log: true, checkOrigin: false }, "#dp-b86f24eb2c87473499fe76126b386e94");
+  iframeResize({ log: true, checkOrigin: false }, "#dp-10255361a9ba40bd902ed648b18f831a");
 </script>
 </div></div>
 </div>
@@ -700,19 +703,19 @@ Instead, they can be filtered by searching for a string with the following Seque
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1931/267071324.py:11: FutureWarning: In a future version of pandas all arguments of DataFrame.any and Series.any will be keyword-only.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1894/267071324.py:11: FutureWarning: In a future version of pandas all arguments of DataFrame.any and Series.any will be keyword-only.
   farm_df = farm_df[ pd.DataFrame( farm_df[&quot;scope&quot;].tolist() ).isin( [&quot;farm&quot;, &quot;any&quot;] ).any(1).values ]
 /opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/datapane/common/df_processor.py:26: FutureWarning: pandas.Int64Index is deprecated and will be removed from pandas in a future version. Use pandas.Index with the appropriate dtype instead.
   elif isinstance(df.index, pd.Int64Index):
 </pre></div>
 </div>
 <div class="output text_html"><style>
-  #dp-b1920aa5f8a64bcab3eceb26c0bf9c06 {
+  #dp-b2902c90b3b7435eafe1adc157e58a3b {
     width: 1px;
     min-width: 100%;
   }
 </style>
-<iframe id="dp-b1920aa5f8a64bcab3eceb26c0bf9c06" srcdoc="&lt;!DOCTYPE html&gt;
+<iframe id="dp-b2902c90b3b7435eafe1adc157e58a3b" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
   &lt;head&gt;
 &lt;meta charset=&quot;UTF-8&quot; /&gt;
@@ -767,7 +770,7 @@ Instead, they can be filtered by searching for a string with the following Seque
 </iframe>
 <script type="module">
   import { iframeResize } from "https://datapane-cdn.com/v0.17.0/report/index.es.js";
-  iframeResize({ log: true, checkOrigin: false }, "#dp-b1920aa5f8a64bcab3eceb26c0bf9c06");
+  iframeResize({ log: true, checkOrigin: false }, "#dp-b2902c90b3b7435eafe1adc157e58a3b");
 </script>
 </div></div>
 </div>
@@ -800,12 +803,12 @@ Instead, they can be filtered by searching for a string with the following Seque
 </pre></div>
 </div>
 <div class="output text_html"><style>
-  #dp-4332e51d6f70453caca4dc0c08967d07 {
+  #dp-296dc6cc52a04740862ef49c1139db86 {
     width: 1px;
     min-width: 100%;
   }
 </style>
-<iframe id="dp-4332e51d6f70453caca4dc0c08967d07" srcdoc="&lt;!DOCTYPE html&gt;
+<iframe id="dp-296dc6cc52a04740862ef49c1139db86" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
   &lt;head&gt;
 &lt;meta charset=&quot;UTF-8&quot; /&gt;
@@ -860,7 +863,7 @@ Instead, they can be filtered by searching for a string with the following Seque
 </iframe>
 <script type="module">
   import { iframeResize } from "https://datapane-cdn.com/v0.17.0/report/index.es.js";
-  iframeResize({ log: true, checkOrigin: false }, "#dp-4332e51d6f70453caca4dc0c08967d07");
+  iframeResize({ log: true, checkOrigin: false }, "#dp-296dc6cc52a04740862ef49c1139db86");
 </script>
 </div></div>
 </div>
@@ -896,12 +899,12 @@ Instead, they can be filtered by searching for a string with the following Seque
 </pre></div>
 </div>
 <div class="output text_html"><style>
-  #dp-6094b127b0624794bc60998b5bc7857f {
+  #dp-cc38cbe22d974d21b2cc0f7f8f982610 {
     width: 1px;
     min-width: 100%;
   }
 </style>
-<iframe id="dp-6094b127b0624794bc60998b5bc7857f" srcdoc="&lt;!DOCTYPE html&gt;
+<iframe id="dp-cc38cbe22d974d21b2cc0f7f8f982610" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
   &lt;head&gt;
 &lt;meta charset=&quot;UTF-8&quot; /&gt;
@@ -956,7 +959,7 @@ Instead, they can be filtered by searching for a string with the following Seque
 </iframe>
 <script type="module">
   import { iframeResize } from "https://datapane-cdn.com/v0.17.0/report/index.es.js";
-  iframeResize({ log: true, checkOrigin: false }, "#dp-6094b127b0624794bc60998b5bc7857f");
+  iframeResize({ log: true, checkOrigin: false }, "#dp-cc38cbe22d974d21b2cc0f7f8f982610");
 </script>
 </div></div>
 </div>
@@ -987,12 +990,12 @@ Instead, they can be filtered by searching for a string with the following Seque
 </pre></div>
 </div>
 <div class="output text_html"><style>
-  #dp-b8eb6c1b8ff342b687e7690523df78e3 {
+  #dp-edfa94a20ab64a0797b7793e791bbe46 {
     width: 1px;
     min-width: 100%;
   }
 </style>
-<iframe id="dp-b8eb6c1b8ff342b687e7690523df78e3" srcdoc="&lt;!DOCTYPE html&gt;
+<iframe id="dp-edfa94a20ab64a0797b7793e791bbe46" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
   &lt;head&gt;
 &lt;meta charset=&quot;UTF-8&quot; /&gt;
@@ -1047,7 +1050,7 @@ Instead, they can be filtered by searching for a string with the following Seque
 </iframe>
 <script type="module">
   import { iframeResize } from "https://datapane-cdn.com/v0.17.0/report/index.es.js";
-  iframeResize({ log: true, checkOrigin: false }, "#dp-b8eb6c1b8ff342b687e7690523df78e3");
+  iframeResize({ log: true, checkOrigin: false }, "#dp-edfa94a20ab64a0797b7793e791bbe46");
 </script>
 </div></div>
 </div>
@@ -1085,12 +1088,12 @@ Instead, they can be filtered by searching for a string with the following Seque
 </pre></div>
 </div>
 <div class="output text_html"><style>
-  #dp-bc68cd4e7bdf448297543920fc6a13cd {
+  #dp-d520db3865354846aa8437442137dcbc {
     width: 1px;
     min-width: 100%;
   }
 </style>
-<iframe id="dp-bc68cd4e7bdf448297543920fc6a13cd" srcdoc="&lt;!DOCTYPE html&gt;
+<iframe id="dp-d520db3865354846aa8437442137dcbc" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
   &lt;head&gt;
 &lt;meta charset=&quot;UTF-8&quot; /&gt;
@@ -1145,7 +1148,7 @@ Instead, they can be filtered by searching for a string with the following Seque
 </iframe>
 <script type="module">
   import { iframeResize } from "https://datapane-cdn.com/v0.17.0/report/index.es.js";
-  iframeResize({ log: true, checkOrigin: false }, "#dp-bc68cd4e7bdf448297543920fc6a13cd");
+  iframeResize({ log: true, checkOrigin: false }, "#dp-d520db3865354846aa8437442137dcbc");
 </script>
 </div></div>
 </div>
@@ -1177,12 +1180,12 @@ Instead, they can be filtered by searching for a string with the following Seque
 </pre></div>
 </div>
 <div class="output text_html"><style>
-  #dp-e32da07178e046d48627c6686356d190 {
+  #dp-3388ec3d279e4cd1ad0606524c88b42d {
     width: 1px;
     min-width: 100%;
   }
 </style>
-<iframe id="dp-e32da07178e046d48627c6686356d190" srcdoc="&lt;!DOCTYPE html&gt;
+<iframe id="dp-3388ec3d279e4cd1ad0606524c88b42d" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
   &lt;head&gt;
 &lt;meta charset=&quot;UTF-8&quot; /&gt;
@@ -1237,7 +1240,7 @@ Instead, they can be filtered by searching for a string with the following Seque
 </iframe>
 <script type="module">
   import { iframeResize } from "https://datapane-cdn.com/v0.17.0/report/index.es.js";
-  iframeResize({ log: true, checkOrigin: false }, "#dp-e32da07178e046d48627c6686356d190");
+  iframeResize({ log: true, checkOrigin: false }, "#dp-3388ec3d279e4cd1ad0606524c88b42d");
 </script>
 </div></div>
 </div>
@@ -1268,12 +1271,12 @@ Instead, they can be filtered by searching for a string with the following Seque
 </pre></div>
 </div>
 <div class="output text_html"><style>
-  #dp-63012f6a573041789151d9351de33fc7 {
+  #dp-8c6ac59130d04c3281d89bf2cb10abec {
     width: 1px;
     min-width: 100%;
   }
 </style>
-<iframe id="dp-63012f6a573041789151d9351de33fc7" srcdoc="&lt;!DOCTYPE html&gt;
+<iframe id="dp-8c6ac59130d04c3281d89bf2cb10abec" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
   &lt;head&gt;
 &lt;meta charset=&quot;UTF-8&quot; /&gt;
@@ -1328,7 +1331,7 @@ Instead, they can be filtered by searching for a string with the following Seque
 </iframe>
 <script type="module">
   import { iframeResize } from "https://datapane-cdn.com/v0.17.0/report/index.es.js";
-  iframeResize({ log: true, checkOrigin: false }, "#dp-63012f6a573041789151d9351de33fc7");
+  iframeResize({ log: true, checkOrigin: false }, "#dp-8c6ac59130d04c3281d89bf2cb10abec");
 </script>
 </div></div>
 </div>
@@ -1357,12 +1360,12 @@ Instead, they can be filtered by searching for a string with the following Seque
 </pre></div>
 </div>
 <div class="output text_html"><style>
-  #dp-b548307bcf334792ba2b60fe8ec5cee7 {
+  #dp-1903197411064e5894e45b7aceec1f00 {
     width: 1px;
     min-width: 100%;
   }
 </style>
-<iframe id="dp-b548307bcf334792ba2b60fe8ec5cee7" srcdoc="&lt;!DOCTYPE html&gt;
+<iframe id="dp-1903197411064e5894e45b7aceec1f00" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
   &lt;head&gt;
 &lt;meta charset=&quot;UTF-8&quot; /&gt;
@@ -1417,7 +1420,7 @@ Instead, they can be filtered by searching for a string with the following Seque
 </iframe>
 <script type="module">
   import { iframeResize } from "https://datapane-cdn.com/v0.17.0/report/index.es.js";
-  iframeResize({ log: true, checkOrigin: false }, "#dp-b548307bcf334792ba2b60fe8ec5cee7");
+  iframeResize({ log: true, checkOrigin: false }, "#dp-1903197411064e5894e45b7aceec1f00");
 </script>
 </div></div>
 </div>

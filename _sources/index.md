@@ -22,15 +22,20 @@ This dashboard contains the results and information related to each focus area.
 OpenFAST can now be installed with conda for any system!
 This simplifies the installation process and allows users to
 easily stay up to date.
-More info [here](https://nwtc.nrel.gov/FAST).
+
+[More info ➤](openfast_conda)
 :::
 
 :::{grid-item-card} HOPP #7
 Here's the second card.
+
+[More info ➤]()
 :::
 
 :::{grid-item-card} Plot velocity profiles in FLORIS
 Here's the third card.
+
+[More info ➤]()
 :::
 ::::
 

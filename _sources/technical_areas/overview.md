@@ -18,7 +18,6 @@ mindmap
             FAST.Farm
             MoorPy
             wtDigiTwin
-            ANBA4
             RAFT
 
         ps(" ")
@@ -36,7 +35,6 @@ mindmap
 - MoorPy https://github.com/nrel/moorpy - Quasi-static mooring model and a suite of associated functions for mooring system analysis.
 - wtDigiTwin https://github.com/ebranlard/wtDigiTwin - Digital twin model for wind turbine containing a set of structural dynamics tools, beam theory, FEM and more.
 - RAFT https://github.com/WISDEM/RAFT - Library for frequency-domain analysis of floating wind turbines.
-- ANBA4 https://github.com/ANBA4/anba4 - Computes the 6x6 stiffness and mass matrices of arbitrarily complex composite beam cross sections.
 ````
 
 
@@ -54,7 +52,6 @@ mindmap
             Nalu Wind
             OpenTurbine
             ERF
-            WindSE
             pyNuMAD
         do(" ")
         ctrl(" ")
@@ -68,7 +65,6 @@ mindmap
 - Nalu-Wind https://github.com/exawind/nalu-wind - Generalized, unstructured, massively parallel, incompressible flow solver for wind turbine and wind farm simulations.
 - OpenTurbine https://github.com/exawind/openturbine - Wind turbine structural dynamics simulation code for land-based and offshore wind turbines specifically designed to couple with low-fidelity aerodynamic/hydrodynamic models (OpenFAST) and high-fidelity computational fluid dynamics (CFD) models (ExaWind).
 - ERF https://github.com/erf-model/ERF - Compressible Navier-Stokes solver on an Arakawa C-grid for large-scale weather modeling.
-- WindSE https://github.com/nrel/windse - Python package that uses a FEniCS backend to perform wind farm simulations and optimization. 
 - pyNuMAD https://github.com/sandialabs/pyNuMAD - Simplifies the process of creating a three-dimensional model of a wind turbine blade by providing an intermediary between raw blade data and analytical platforms (ANSYS, Cubit, OpenFAST, etc).
 ````
 
@@ -86,6 +82,7 @@ mindmap
         do(Design & Optimization)
             WEIS
             WISDEM
+            WindSE
             HOPP
             SONATA
         ctrl(" ")
@@ -97,6 +94,7 @@ mindmap
 
 - WEIS https://github.com/wisdem/weis - Wind Energy with Integrated Servo-control performs multifidelity co-design of wind turbines by combining multiple NREL-developed tools to enable design optimization of floating offshore wind turbines.
 - WISDEM https://github.com/wisdem/wisdem - Set of wind turbine and plant cost and energy production models along with financial models for assessing overall wind plant cost of energy.
+- WindSE https://github.com/nrel/windse - Python package that uses a FEniCS backend to perform wind farm simulations and optimization. 
 - HOPP https://github.com/NREL/HOPP - Assesses optimal designs for the deployment of utility-scale hybrid energy plants, particularly considering wind, solar and storage.
 - SONATA https://github.com/ptrbortolotti/SONATA - Toolbox for Multidisciplinary Rotor Blade Design Environment for Structural Optimization and Aeroelastic Analysis.
 ````

@@ -12,7 +12,6 @@ mindmap
             FAST.Farm
             MoorPy
             wtDigiTwin
-            ANBA4
             RAFT
 
         hfm(High Fidelity Models)
@@ -20,12 +19,12 @@ mindmap
             Nalu Wind
             OpenTurbine
             ERF
-            WindSE
             pyNuMAD
 
         do(Design & Optimization)
             WEIS
             WISDEM
+            WindSE
             HOPP
             SONATA
 
@@ -78,19 +77,18 @@ These projects are actively supported and funded by WETO as of FY23.
 - MoorPy: https://github.com/nrel/moorpy
 - wtDigiTwin: https://github.com/ebranlard/wtDigiTwin
 - RAFT: https://github.com/WISDEM/RAFT
-- ANBA4: https://github.com/ANBA4/anba4
 
 **High fidelity models**
 - AMR-Wind: https://github.com/exawind/amr-wind
 - Nalu-Wind: https://github.com/exawind/nalu-wind
 - OpenTurbine: https://github.com/exawind/openturbine
 - ERF: https://github.com/erf-model/ERF
-- WindSE: https://github.com/nrel/windse
 - pyNuMAD: https://github.com/sandialabs/pyNuMAD
 
 **Design and optimization**
 - WEIS: https://github.com/wisdem/weis
 - WISDEM: https://github.com/wisdem/wisdem
+- WindSE: https://github.com/nrel/windse
 - HOPP: https://github.com/NREL/HOPP
 - SONATA: https://github.com/ptrbortolotti/SONATA
 

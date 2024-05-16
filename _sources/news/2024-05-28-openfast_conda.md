@@ -1,7 +1,7 @@
 (openfast_conda)=
 # OpenFAST on conda-forge
 
-Published on: May 28, 2024
+Published on: May 28, 2024\
 Authors: Derek Slaughter, Andy Platt, Rafael Mudafort
 
 Historically, using OpenFAST has meant obtaining (downloading or getting access to) the Fortran

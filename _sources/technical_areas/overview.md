@@ -18,6 +18,7 @@ mindmap
             FAST.Farm
             MoorPy
             RAFT
+            OWENS
 
         ps(" ")
         hfm(" ")
@@ -33,6 +34,7 @@ mindmap
 - FAST.Farm https://github.com/openfast/openfast - Mid-fidelity wind farm simulator that uses OpenFAST as a turbine model.
 - MoorPy https://github.com/nrel/moorpy - Quasi-static mooring model and a suite of associated functions for mooring system analysis.
 - RAFT https://github.com/WISDEM/RAFT - Library for frequency-domain analysis of floating wind turbines.
+- OWENS https://github.com/sandialabs/OWENS.jl - Multi-physics aero-servo-elastic tool with coupling to OpenFAST hydrodynamics and mooring for the coupled dynamic response of VAWTs and crossflow turbines.
 ````
 
 
@@ -165,7 +167,6 @@ mindmap
         ra(" ")
         cost(Cost Models)
             LandBOSSE
-            HybridBOSSE
             ORBIT
             CORAL
             NRWAL
@@ -175,7 +176,6 @@ mindmap
 ```
 
 - LandBOSSE https://github.com/WISDEM/LandBOSSE - A systems engineering tool that estimates the balance-of-system (BOS) costs associated with installing utility scale wind plants (10, 1.5 MW turbines or larger)
-- HybridBOSSE https://github.com/NREL/HybridBOSSE - A tool for estimating BOS costs for hybrid power plants that share infrastructure.
 - ORBIT https://github.com/WISDEM/ORBIT - A model to study the cost and times associated with Offshore Wind Balance of System (BOS) processes.
 - CORAL https://github.com/NREL/CORAL - Concurrent ORBIT for shared Resource Analysis Library
 - NRWAL https://github.com/NREL/NRWAL - A library of offshore wind cost equations (plus new energy technologies like marine hydro!).

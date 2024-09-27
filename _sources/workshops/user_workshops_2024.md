@@ -1,4 +1,7 @@
+(workshop_2024)=
 # 2024 User Workshops
+
+**This series of workshops has passed. See [](workshop_recaps) and [](workshop_2024_report_top) for more info.**
 
 The Holistic Modeling Portfolio Coordination Project is hosting a series of workshops in June 2024
 to discuss the current state and future direction of the WETO Software Stack.
@@ -96,7 +99,8 @@ mindmap
             openfast_toolbox
 ```
 
-## Workshop Recap, Recordings, and Slides
+(workshop_recaps)=
+## Recordings and Slides
 
 The workshop recordings are hosted on [YouTube](https://www.youtube.com/playlist?list=PL6ksUtsZI1dwRXeWFCmJT6cEN1xijsHJz),
 and they are embedded on this page.
@@ -104,10 +108,65 @@ A PDF version of the slides that were presented at each workshop are included he
 
 ### Systems Engineering
 
-Rafael Mudafort, Pietro Bortolotti, Garrett Barter, Dan Zalkind, Ernesto Camarena, Jeff Allen,
-and Ethan Young co-hosted this workshop.
+The sections presented in this workshop are:
+- [WETO Software Stack](https://nrel.github.io/WETOStack) by Rafael Mudafort
+- [WISDEM](https://github.com/WISDEM/WISDEM) by Pietro Bortolotti
+- [WEIS](https://github.com/WISDEM/WEIS) by Dan Zalkind
+- [pyNuMAD](https://github.com/sandialabs/pyNuMAD) by Ernesto Camarena
+- [WindSE](https://github.com/NREL/WindSE) by Jeff Allen and Ethan Young
 
-{download}`Click here to download the slides.<../_static/UserWorkshops2024_SystemsEngineering.pdf>`
+Garrett Barter co-hosted the workshop and facilitated the discussion.
+
+{download}`Click here to download the slides.<../_static/UserWorkshops2024_SE.pdf>`
 
 ```{youtube} urab_dN12Ws
+```
+
+### TEA and Cost Modeling
+
+The sections presented in this workshop are:
+- [WETO Software Stack](https://nrel.github.io/WETOStack) by Rafael Mudafort
+- [LandBOSSE](https://github.com/WISDEM/LandBOSSE) by Rob Hammond
+- [ORBIT](https://github.com/WISDEM/ORBIT) by Nick Riccobono
+- [CORAL](https://github.com/NREL/CORAL) by Sophie Bredenkamp
+- [WOMBAT](https://github.com/WISDEM/WOMBAT) by Rob Hammond
+- [WAVE](https://github.com/NREL/WAVES) by Rob Hammond
+- [NRWAL](https://github.com/NREL/NRWAL) by Rob Hammond
+
+Garrett Barter co-hosted the workshop and facilitated the discussion.
+
+{download}`Click here to download the slides.<../_static/UserWorkshops2024_TEA.pdf>`
+
+```{youtube} keT7KcBHmgM
+```
+
+### Wind Farm Controls and Analysis
+
+The sections presented in this workshop are:
+- [WETO Software Stack](https://nrel.github.io/WETOStack) by Rafael Mudafort
+- [FLORIS](https://github.com/NREL/FLORIS) by Misha Sinner
+- [FLASC](https://github.com/NREL/FLASC) by Paul Fleming
+- [OpenOA](https://github.com/NREL/OpenOA) by Eric Simley and Rob Hammond
+- [Hercules](https://github.com/NREL/Hercules) by Misha Sinner and Gen Starke
+
+Garrett Barter co-hosted the workshop and facilitated the discussion.
+
+{download}`Click here to download the slides.<../_static/UserWorkshops2024_WFCA.pdf>`
+
+```{youtube} f-w6whxIBrA
+```
+
+### OpenFAST Ecosystem
+
+The sections presented in this workshop are:
+- [WETO Software Stack](https://nrel.github.io/WETOStack) by Rafael Mudafort
+- [OpenFAST](https://github.com/NREL/FLORIS) by Jason Jonkman
+- [ACDC](https://github.com/NREL/FLASC) by Derek Slaughter
+- [ROSCO](https://github.com/NREL/OpenOA) by Dan Zalkind
+
+Garrett Barter co-hosted the workshop and facilitated the discussion.
+
+{download}`Click here to download the slides.<../_static/UserWorkshops2024_OpenFAST.pdf>`
+
+```{youtube} cadiJ4_FGXc
 ```

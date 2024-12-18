@@ -413,7 +413,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#latest-releases">Latest Releases</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#releases-from-the-past-30-days">Releases from the past 30 days</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#latest-news">Latest News</a></li>
 </ul>
             </nav>
@@ -429,11 +429,10 @@
   <section class="tex2jax_ignore mathjax_ignore" id="news-and-releases">
 <h1>News and Releases<a class="headerlink" href="#news-and-releases" title="Link to this heading">#</a></h1>
 <p>Keep up with the latest updates from components of the WETO Stack here!
-While each project has it’s own documentation page, this page contains high-level information,
+While each project has its own documentation, this page contains high-level information,
 links to sources, and other news that may be of interest to the WETO community.</p>
-<section id="latest-releases">
-<h2>Latest Releases<a class="headerlink" href="#latest-releases" title="Link to this heading">#</a></h2>
-<p>The following list contains WETO Stack project releases for the past 30 days.</p>
+<section id="releases-from-the-past-30-days">
+<h2>Releases from the past 30 days<a class="headerlink" href="#releases-from-the-past-30-days" title="Link to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -448,7 +447,7 @@ links to sources, and other news that may be of interest to the WETO community.<
 <span class="kn">import</span> <span class="nn">yaml</span>
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">display</span>
 
-<span class="c1"># github_token = os.getenv(&#39;GITHUB_TOKEN&#39;)</span>
+<span class="n">github_token</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;GITHUB_TOKEN&#39;</span><span class="p">)</span>
 
 <span class="n">software_attr_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;..&quot;</span><span class="p">,</span> <span class="s2">&quot;..&quot;</span><span class="p">,</span> <span class="s2">&quot;software_attributes&quot;</span><span class="p">)</span>
 
@@ -465,7 +464,7 @@ links to sources, and other news that may be of interest to the WETO community.<
 <span class="n">recent_releases</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">thirty_days_ago</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">()</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">repo</span> <span class="ow">in</span> <span class="n">repos</span><span class="p">:</span>
-    <span class="n">api</span> <span class="o">=</span> <span class="n">GhApi</span><span class="p">(</span><span class="n">owner</span><span class="o">=</span><span class="n">repo</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">repo</span><span class="o">=</span><span class="n">repo</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1">#, token=github_token)</span>
+    <span class="n">api</span> <span class="o">=</span> <span class="n">GhApi</span><span class="p">(</span><span class="n">owner</span><span class="o">=</span><span class="n">repo</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">repo</span><span class="o">=</span><span class="n">repo</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">token</span><span class="o">=</span><span class="n">github_token</span><span class="p">)</span>
     <span class="n">releases</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">repos</span><span class="o">.</span><span class="n">list_releases</span><span class="p">()</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">releases</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">continue</span>
@@ -574,7 +573,7 @@ links to sources, and other news that may be of interest to the WETO community.<
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#latest-releases">Latest Releases</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#releases-from-the-past-30-days">Releases from the past 30 days</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#latest-news">Latest News</a></li>
 </ul>
   </nav></div>

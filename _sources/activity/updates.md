@@ -13,12 +13,10 @@ kernelspec:
 # News and Releases
 
 Keep up with the latest updates from components of the WETO Stack here!
-While each project has it's own documentation page, this page contains high-level information,
+While each project has its own documentation, this page contains high-level information,
 links to sources, and other news that may be of interest to the WETO community.
 
-## Latest Releases
-
-The following list contains WETO Stack project releases for the past 30 days.
+## Releases from the past 30 days
 
 ```{code-cell} ipython3
 :tags: [hide-input]
@@ -30,7 +28,7 @@ from ghapi.all import GhApi
 import yaml
 from IPython.display import Markdown, display
 
-# github_token = os.getenv('GITHUB_TOKEN')
+github_token = os.getenv('GITHUB_TOKEN')
 
 software_attr_dir = Path("..", "..", "software_attributes")
 
@@ -47,7 +45,7 @@ repos = [(atts["github_account"], atts["github_repo"]) for model, atts in model_
 recent_releases = []
 thirty_days_ago = datetime.today() - timedelta(days=30)
 for repo in repos:
-    api = GhApi(owner=repo[0], repo=repo[1]) #, token=github_token)
+    api = GhApi(owner=repo[0], repo=repo[1], token=github_token)
     releases = api.repos.list_releases()
     if len(releases) < 1:
         continue

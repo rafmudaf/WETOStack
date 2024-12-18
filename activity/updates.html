@@ -450,7 +450,7 @@ links to sources, and other news that may be of interest to the WETO community.<
 <span class="kn">import</span> <span class="nn">yaml</span>
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">display</span>
 
-<span class="n">github_token</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;GITHUB_TOKEN&#39;</span><span class="p">)</span>
+<span class="c1"># github_token = os.getenv(&#39;GITHUB_TOKEN&#39;)</span>
 
 <span class="n">software_attr_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;..&quot;</span><span class="p">,</span> <span class="s2">&quot;..&quot;</span><span class="p">,</span> <span class="s2">&quot;software_attributes&quot;</span><span class="p">)</span>
 
@@ -467,13 +467,14 @@ links to sources, and other news that may be of interest to the WETO community.<
 <span class="n">recent_releases</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">thirty_days_ago</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">()</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">repo</span> <span class="ow">in</span> <span class="n">repos</span><span class="p">:</span>
-    <span class="n">api</span> <span class="o">=</span> <span class="n">GhApi</span><span class="p">(</span><span class="n">owner</span><span class="o">=</span><span class="n">repo</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">repo</span><span class="o">=</span><span class="n">repo</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">token</span><span class="o">=</span><span class="n">github_token</span><span class="p">)</span>
+    <span class="n">api</span> <span class="o">=</span> <span class="n">GhApi</span><span class="p">(</span><span class="n">owner</span><span class="o">=</span><span class="n">repo</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">repo</span><span class="o">=</span><span class="n">repo</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1">#, token=github_token)</span>
     <span class="n">releases</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">repos</span><span class="o">.</span><span class="n">list_releases</span><span class="p">()</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">releases</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">continue</span>
     <span class="n">last_release_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromisoformat</span><span class="p">(</span><span class="n">releases</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;published_at&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tzinfo</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">last_release_date</span> <span class="o">&gt;</span> <span class="n">thirty_days_ago</span><span class="p">:</span>
         <span class="n">recent_releases</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">repo</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">repo</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">last_release_date</span><span class="p">))</span>
+<span class="n">recent_releases</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">release_list_md</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 <span class="k">for</span> <span class="n">account</span><span class="p">,</span> <span class="n">repo</span><span class="p">,</span> <span class="n">release_date</span> <span class="ow">in</span> <span class="n">recent_releases</span><span class="p">:</span>
@@ -491,12 +492,12 @@ links to sources, and other news that may be of interest to the WETO community.<
 </pre></div>
 </div>
 <ul class="simple">
+<li><p>NREL/dgen - 2024-12-18</p></li>
 <li><p>exawind/amr-wind - 2024-12-13</p></li>
+<li><p>wisdem/wombat - 2024-12-12</p></li>
 <li><p>nrel/floris - 2024-11-27</p></li>
 <li><p>wisdem/weis - 2024-11-21</p></li>
 <li><p>wisdem/wisdem - 2024-11-20</p></li>
-<li><p>wisdem/wombat - 2024-12-12</p></li>
-<li><p>NREL/dgen - 2024-12-18</p></li>
 </ul>
 <p><em>Updated on 2024-12-18</em></p>
 </div>

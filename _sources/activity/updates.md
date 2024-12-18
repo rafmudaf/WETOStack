@@ -30,7 +30,7 @@ from ghapi.all import GhApi
 import yaml
 from IPython.display import Markdown, display
 
-github_token = os.getenv('GITHUB_TOKEN')
+# github_token = os.getenv('GITHUB_TOKEN')
 
 software_attr_dir = Path("..", "..", "software_attributes")
 
@@ -47,13 +47,14 @@ repos = [(atts["github_account"], atts["github_repo"]) for model, atts in model_
 recent_releases = []
 thirty_days_ago = datetime.today() - timedelta(days=30)
 for repo in repos:
-    api = GhApi(owner=repo[0], repo=repo[1], token=github_token)
+    api = GhApi(owner=repo[0], repo=repo[1]) #, token=github_token)
     releases = api.repos.list_releases()
     if len(releases) < 1:
         continue
     last_release_date = datetime.fromisoformat(releases[0]["published_at"]).replace(tzinfo=None)
     if last_release_date > thirty_days_ago:
         recent_releases.append((repo[0], repo[1], last_release_date))
+recent_releases.sort(key=lambda x: x[2], reverse=True)
 
 release_list_md = ""
 for account, repo, release_date in recent_releases:
